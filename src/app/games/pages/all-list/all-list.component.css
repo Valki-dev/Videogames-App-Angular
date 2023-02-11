@@ -1,0 +1,11 @@
+.rojo {
+    border: 3px solid red
+}
+
+img {
+    height: 350px;
+}
+
+.card {
+    max-height: 480px;
+}
