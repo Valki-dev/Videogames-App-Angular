@@ -5,6 +5,7 @@ import { GamesRoutingModule } from './games-routing.module';
 import { AllListComponent } from './pages/all-list/all-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InputComponent } from './sharedGames/input/input.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { InputComponent } from './sharedGames/input/input.component';
   imports: [
     CommonModule,
     GamesRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ]
 })
 export class GamesModule { }

@@ -12,6 +12,7 @@ export class AllListComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   games: Game[] = [];
+  search: string = "";
 
   ngOnInit(): void {
     this.getAllGames();
@@ -24,5 +25,15 @@ export class AllListComponent implements OnInit {
     console.log(this.games);
   }
 
+  searchGamesByName(search: string) {
+    if(search) {
+      this.gameService.getGamesByName(search).subscribe((response: any) => {
+        this.games = response;
+        console.log("entra");
+      })
+    } else {
+      this.getAllGames();
+    }
+  }
 
 }

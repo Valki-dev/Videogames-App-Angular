@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +9,6 @@ export class HeaderComponent {
 
   constructor() { }
 
-  @Input() placeholder: string = "";
-
-  @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
-
-  searchGame(search: string) {
-    this.onSearch.emit(search);
-  }
+  
 
 }

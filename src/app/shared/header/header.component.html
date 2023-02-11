@@ -1,5 +1,5 @@
-<div class="grid-cols-3 flex justify-evenly bg-shared" id="header">
-    <div class="grid-cols-1 p-4 flex justify-center rojo">
+<div class="grid-cols-2 flex justify-between bg-shared" id="header">
+    <div class=" p-4 flex justify-center rojo">
         <nav class="bg-shared">
             <div>
                 <div class="relative flex items-center justify-between">
@@ -86,13 +86,8 @@
         </nav>
     </div>
 
-    <div class="grid-cols-1 p-4 flex justify-center rojo">
-        <form (ngSubmit)="searchGame(search.value)">
-            <input type="text" class="rounded-[50px] w-[400px] p-2 ms-10" id="search" name="search" [placeholder]="placeholder" #search>
-        </form>
-    </div>
 
-    <div class="rojo grid-cols-1">
+    <div class="rojo ">
         <nav>
             <!-- Profile dropdown -->
             <div class="relative ml-3">
