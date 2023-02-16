@@ -11,5 +11,6 @@ export interface Game {
     available: boolean,
     onOffer: boolean,
     isNew: boolean,
-    URL: string
+    URL: string,
+    trailerURL: string
 }

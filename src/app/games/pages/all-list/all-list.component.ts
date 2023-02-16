@@ -18,9 +18,14 @@ export class AllListComponent implements OnInit {
     this.getAllGames();
   }
 
+  get getVideoGames() {
+    return this.gameService.getVideoGames();
+  }
+
   getAllGames() {
     this.gameService.getAllGames().subscribe((response: any) => {
       this.games = response;
+      this.gameService.videoGames = response;
     })
     console.log(this.games);
   }
@@ -29,6 +34,7 @@ export class AllListComponent implements OnInit {
     if(search) {
       this.gameService.getGamesByName(search).subscribe((response: any) => {
         this.games = response;
+        this.gameService.videoGames = response;
         console.log("entra");
       })
     } else {

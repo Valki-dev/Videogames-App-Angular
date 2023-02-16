@@ -6,13 +6,15 @@ import { AllListComponent } from './pages/all-list/all-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InputComponent } from './sharedGames/input/input.component';
 import { FormsModule } from '@angular/forms';
+import { GameDetailsComponent } from './pages/game-details/game-details.component';
 
 
 @NgModule({
   declarations: [
     AllListComponent,
     InputComponent,
-    InputComponent
+    InputComponent,
+    GameDetailsComponent
   ],
   imports: [
     CommonModule,

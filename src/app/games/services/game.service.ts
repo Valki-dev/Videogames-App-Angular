@@ -12,6 +12,12 @@ export class GameService {
 
   private endpoint: string = "http://localhost:3000/api/v1/videogames/games";
 
+  videoGames: Game[] = []
+
+  getVideoGames() {
+    return this.videoGames;
+  }
+
   getAllGames(): Observable<Game[]> {
     // console.log(this.httpClient.get<Game[]>(`${this.endpoint}games`));
     
@@ -22,6 +28,10 @@ export class GameService {
     console.log(`${this.endpoint}/search/${search}`);
     
     return this.httpClient.get<Game[]>(`${this.endpoint}/search/${search}`);
+  }
+
+  getGameById(id: number): Observable<Game>{    
+    return this.httpClient.get<Game>(`${this.endpoint}/${id}`);
   }
 
 }

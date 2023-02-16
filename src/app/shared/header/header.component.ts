@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GameService } from '../../games/services/game.service';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,12 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-  constructor() { }
+  constructor(private gameService: GameService) { }
 
-  
+  getAllGames() {
+    this.gameService.getAllGames().subscribe((response: any) => {
+      this.gameService.videoGames = response;
+    })
+  }
 
 }
