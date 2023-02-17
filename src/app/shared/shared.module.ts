@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
+import {TieredMenuModule} from 'primeng/tieredmenu';
 
 
 
@@ -15,7 +16,8 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    TieredMenuModule
   ],
   exports: [
     HeaderComponent,

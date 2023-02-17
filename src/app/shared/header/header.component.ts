@@ -10,10 +10,16 @@ export class HeaderComponent {
 
   constructor(private gameService: GameService) { }
 
+  showMenu: boolean = false;
+
   getAllGames() {
     this.gameService.getAllGames().subscribe((response: any) => {
       this.gameService.videoGames = response;
     })
+  }
+
+  toggleMenu() {
+    this.showMenu ? this.showMenu = false : this.showMenu = true;
   }
 
 }

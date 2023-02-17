@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InputComponent } from './sharedGames/input/input.component';
 import { FormsModule } from '@angular/forms';
 import { GameDetailsComponent } from './pages/game-details/game-details.component';
+import {ButtonModule} from 'primeng/button';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { GameDetailsComponent } from './pages/game-details/game-details.componen
     CommonModule,
     GamesRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ButtonModule
   ]
 })
 export class GamesModule { }
