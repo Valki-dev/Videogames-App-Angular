@@ -16,6 +16,8 @@ export class AllListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllGames();
+    console.log(this.gameService.getLogged());
+    
   }
 
   get getVideoGames() {

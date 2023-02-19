@@ -1,0 +1,42 @@
+<div class="grid-cols-1 flex justify-center items-center bg-main main min-h-[71.5vh]">
+    <div class="flex justify-center">
+        <div class="block p-6 rounded-lg shadow-lg min-w-4xl card">
+            <h1 class="text-white text-4xl leading-tight font-medium mb-2">Registro</h1>
+            <hr>
+            <form (ngSubmit)="register()" class="flex flex-col items-center min-w-fit">
+                <div class="mt-10 grid-cols-1">
+                    <span class="p-float-label  min-w-max">
+                        <input type="text" id="inputtext" name="userName" class="p-3 rounded-lg" pInputText [(ngModel)]="userName">
+                        <label for="inputtext" class="text-white">Nombre de usuario</label>
+                    </span>
+                </div>
+                
+                <!-- <div class="field">
+                    <label for="username2" class="block">Username</label>
+                    <input id="username2" type="username" aria-describedby="username2-help" class="ng-invalid ng-dirty" pInputText />
+                    <small id="username2-help" class="p-error block">Username is not available.</small>
+                </div> -->
+                <span class="p-float-label mt-10">
+                    <input type="email" id="inputtext" name="email" class="p-3 rounded-lg" pInputText [(ngModel)]="email">
+                    <label for="inputtext" class="text-white">Email</label>
+                </span>
+                <span class="p-float-label mt-10">
+                    <p-password inputId="password" name="password" [(ngModel)]="password"></p-password>
+                    <label for="password">Contraseña</label>
+                </span>
+                <span class="p-float-label mt-10">
+                    <p-password inputId="password" name="password2" [(ngModel)]="password2"></p-password>
+                    <label for="Repite la contraseña">Repite la contraseña</label>
+                </span>
+                <span class="p-float-label my-10">
+                    <p-inputMask inputId="inputmask" name="phoneNumber" mask="999999999" [(ngModel)]="phoneNumber"></p-inputMask>
+                    <label for="Teléfono">Teléfono</label>
+                </span>
+                <div class="flex justify-center">
+                    <button pButton pRipple type="submit" label="Registrarme" class="p-button-outlined p-button-help"></button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>

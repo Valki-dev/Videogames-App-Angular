@@ -80,7 +80,9 @@
                                 <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                             </button> -->
 
-                            <button (click)="toggleMenu()" class="bg-gray-800 rounded-full"><img src="../../../assets/iconoPerfilBlanco.png" alt="Icono no disponible" width="50px" class="p-3"></button>
+                            <button (click)="toggleMenu()" class="bg-gray-800 rounded-full"><img
+                                    src="../../../assets/iconoPerfilBlanco.png" alt="Icono no disponible" width="50px"
+                                    class="p-3"></button>
 
                         </div>
 
@@ -105,14 +107,26 @@
                                 
                         </div> -->
 
-                        <div class="absolute right-0 z-10 w-40 origin-top-right rounded-md bg-button-navbar py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" *ngIf="showMenu">
-                            <!-- Active: "bg-gray-100", Not Active: "" -->
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-button-hover" role="menuitem" tabindex="-1"
-                                id="user-menu-item-0">Perfil</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-button-hover" role="menuitem" tabindex="-1"
-                                id="user-menu-item-1">Settings</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-button-hover" role="menuitem" tabindex="-1"
-                                id="user-menu-item-2">Cerrar sesión</a>
+                        <div class="absolute right-0 z-10 w-40 origin-top-right rounded-md bg-button-navbar py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
+                            *ngIf="showMenu">
+                            <div  (onGetLogged)="getLogged($event)" *ngIf="logged; else notLogged">
+                                <!-- Active: "bg-gray-100", Not Active: "" -->
+                                <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-button-hover"
+                                    role="menuitem" tabindex="-1" id="user-menu-item-0">Perfil</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-button-hover"
+                                    role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-button-hover"
+                                    role="menuitem" tabindex="-1" id="user-menu-item-2">Cerrar sesión</a>
+                            </div>
+
+                            <ng-template #notLogged>
+                                <a routerLink="/user/login" class="block px-4 py-2 text-sm text-white hover:bg-button-hover"
+                                    role="menuitem" tabindex="-1" id="user-menu-item-0">Iniciar sesión</a>
+                                <a routerLink="/user/register" class="block px-4 py-2 text-sm text-white hover:bg-button-hover"
+                                    role="menuitem" tabindex="-1" id="user-menu-item-1">Registrarse</a>
+                            </ng-template>
+
                         </div>
                     </div>
                 </div>

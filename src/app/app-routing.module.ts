@@ -4,6 +4,7 @@ import { GamesModule } from './games/games.module';
 
 const routes: Routes = [
   {path: "games", loadChildren: () => import('./games/games.module').then(response => response.GamesModule)},
+  {path: "user", loadChildren: () => import('./users/users.module').then(response => response.UsersModule)},
   {path: "**", redirectTo: "games"}
 ];
 
