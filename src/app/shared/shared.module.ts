@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import {TieredMenuModule} from 'primeng/tieredmenu';
-
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import {TieredMenuModule} from 'primeng/tieredmenu';
     CommonModule,
     FormsModule,
     RouterModule,
-    TieredMenuModule
+    TieredMenuModule,
+    ButtonModule
   ],
   exports: [
     HeaderComponent,

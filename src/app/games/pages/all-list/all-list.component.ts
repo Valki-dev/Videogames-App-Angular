@@ -16,8 +16,6 @@ export class AllListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllGames();
-    console.log(this.gameService.getLogged());
-    
   }
 
   get getVideoGames() {
@@ -29,7 +27,6 @@ export class AllListComponent implements OnInit {
       this.games = response;
       this.gameService.videoGames = response;
     })
-    console.log(this.games);
   }
 
   searchGamesByName(search: string) {
@@ -37,7 +34,6 @@ export class AllListComponent implements OnInit {
       this.gameService.getGamesByName(search).subscribe((response: any) => {
         this.games = response;
         this.gameService.videoGames = response;
-        console.log("entra");
       })
     } else {
       this.getAllGames();

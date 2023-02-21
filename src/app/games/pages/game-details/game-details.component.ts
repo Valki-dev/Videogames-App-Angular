@@ -18,7 +18,6 @@ export class GameDetailsComponent implements OnInit {
     this.activeRoute.params.subscribe(({id}) => {
       this.gameService.getGameById(id).subscribe((response: any) => {
         this.game = response[0];
-        console.log(this.game);
       })
     })
   }

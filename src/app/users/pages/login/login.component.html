@@ -1,19 +1,23 @@
 <div class="grid-cols-1 flex justify-center items-center bg-main main min-h-[71.5vh]">
     <div class="flex justify-center">
-        <div class="block p-6 rounded-lg shadow-lg min-w-4xl card">
+        <div class="p-[40px] my-7 rounded-lg shadow-lg min-w-4xl card">
             <h1 class="text-white text-4xl leading-tight font-medium mb-2">Inicio de sesión</h1>
             <hr>
-            <form (ngSubmit)="logIn()" class="flex flex-col items-center min-w-fit">
-                <span class="p-float-label mt-10">
-                    <input type="email" id="inputtext" name="email" class="p-3 rounded-lg" pInputText [(ngModel)]="email">
-                    <label for="inputtext" class="text-white">Email</label>
-                </span>
-                <span class="p-float-label my-10">
-                    <p-password inputId="password" name="password" [(ngModel)]="password"></p-password>
-                    <label for="password">Contraseña</label>
-                </span>
+            <form (ngSubmit)="logIn()" class="flex flex-col items-center px-5">
+                <div class="mt-10 grid-cols-1 w-[100%]">
+                    <span class="p-float-label">
+                        <input type="text" id="inputtext" name="email" class="rounded-lg p-3" pInputText [(ngModel)]="email">
+                        <label for="inputtext">Email</label>
+                    </span>
+                </div>
+                <div class="mt-10 mb-10 grid-cols-1 w-[100%]">
+                    <span class="p-float-label">
+                        <input type="password" id="inputtext" name="password" class="rounded-lg p-3" pInputText [(ngModel)]="password">
+                        <label for="inputtext">Contraseña</label>
+                    </span>
+                </div>
                 <div class="flex justify-center">
-                    <button pButton pRipple type="submit" label="Registrarme" class="p-button-outlined p-button-help"></button>
+                    <button pButton pRipple type="submit" label="Iniciar sesión" class="p-button-outlined p-button-help"></button>
                 </div>
             </form>
         </div>

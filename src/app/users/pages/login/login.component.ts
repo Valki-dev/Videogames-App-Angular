@@ -15,12 +15,6 @@ export class LoginComponent {
   email: string = "";
   password: string = "";
 
-  @Output() onGetLogged: EventEmitter<number> = new EventEmitter<number>();
-
-  getLogged(value: number) {
-    this.onGetLogged.emit(value);
-  }
-
   logIn() {
     if((this.email.trim() != "") && (this.password.trim() != "")) {
       const data = {
@@ -34,7 +28,6 @@ export class LoginComponent {
           
           this.gameService.setLogged(true);
           
-          this.getLogged(1);
           this.router.navigate(['/games/all']);
         }
       });

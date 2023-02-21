@@ -8,10 +8,7 @@ import { GameService } from '../../games/services/game.service';
 })
 export class HeaderComponent {
 
-  constructor(private gameService: GameService) { 
-    console.log(this.gameService.getLogged());
-    
-  }
+  constructor(private gameService: GameService) { }
 
   showMenu: boolean = false;
 
@@ -25,13 +22,18 @@ export class HeaderComponent {
 
   toggleMenu() {
     this.showMenu ? this.showMenu = false : this.showMenu = true;
+    this.logged = this.gameService.getLogged();
   }
 
-  getLogged(value: any) {
-    // value == 1 ? this.gameService.setLogged(true) : this.gameService.setLogged(false);
-    console.log(value);
-    
-    this.logged = true;
+  logOut() {
+    this.gameService.setLogged(false);
   }
+
+  // getLogged(value: any) {
+  //   // value == 1 ? this.gameService.setLogged(true) : this.gameService.setLogged(false);
+  //   console.log(value);
+    
+  //   this.logged = true;
+  // }
 
 }

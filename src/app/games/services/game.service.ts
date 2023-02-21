@@ -22,22 +22,18 @@ export class GameService {
 
   getLogged() {
     return this.logged;
+    console.log("VALOR: ", this.logged);
   }
 
   setLogged(value: boolean) {
     this.logged = value;
-    console.log("VALOR: ", this.logged);
   }
 
-  getAllGames(): Observable<Game[]> {
-    // console.log(this.httpClient.get<Game[]>(`${this.endpoint}games`));
-    
+  getAllGames(): Observable<Game[]> {    
     return this.httpClient.get<Game[]>(`${this.endpoint}`);
   }
 
-  getGamesByName(search:string): Observable<Game[]> {
-    console.log(`${this.endpoint}/search/${search}`);
-    
+  getGamesByName(search:string): Observable<Game[]> {    
     return this.httpClient.get<Game[]>(`${this.endpoint}/search/${search}`);
   }
 

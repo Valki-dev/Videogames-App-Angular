@@ -8,14 +8,18 @@ import { PasswordModule } from 'primeng/password';
 import { InputMaskModule } from 'primeng/inputmask';
 import { ButtonModule } from 'primeng/button';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    WishlistComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +29,8 @@ import { SharedModule } from '../shared/shared.module';
     ButtonModule,
     HttpClientModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class UsersModule { }

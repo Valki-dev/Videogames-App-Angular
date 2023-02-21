@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,7 @@ import { UserService } from '../../services/user.service';
 })
 export class RegisterComponent {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder) { }
 
   userName: string = "";
   email: string = "";
