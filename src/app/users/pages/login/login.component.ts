@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { GameService } from '../../../games/services/game.service';
 import { Router } from '@angular/router';
+import { User } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   
-  constructor(private userService: UserService, private gameService: GameService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   email: string = "";
   password: string = "";
@@ -24,9 +25,12 @@ export class LoginComponent {
 
       this.userService.logIn(data).subscribe(response => {
         if(response) {
-          console.log(response);
+
+          let user: User = response[0];
           
-          this.gameService.setLogged(true);
+          this.userService.setUserLogged(user);
+
+          this.userService.setLogged(true);
           
           this.router.navigate(['/games/all']);
         }

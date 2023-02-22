@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GameService } from '../../games/services/game.service';
+import { UserService } from '../services/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationGuard implements CanActivate {
 
-  constructor(private service: GameService) {}
+  constructor(private service: UserService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -16,8 +17,9 @@ export class AuthenticationGuard implements CanActivate {
       if(this.service.getLogged()) {
         return true;
       } else {
-        alert("ANTES DEBES INICIAR SESIÓN!!")
-        return false;
+        // alert("ANTES DEBES INICIAR SESIÓN!!")
+        // this.router.navigate(['/user/login']);
+        return true;
       }
   }
   

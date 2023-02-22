@@ -4,5 +4,6 @@ export interface User {
     email: string,
     password: string,
     phoneNumber: string,
+    subscriptionDate: Date,
     isAdmin: boolean
 }

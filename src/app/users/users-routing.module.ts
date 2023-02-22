@@ -5,13 +5,15 @@ import { RegisterComponent } from './pages/register/register.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   {path: '', children: [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'wishlist', component: WishlistComponent, canActivate: [AuthenticationGuard]},
-    {path: 'profile', component: ProfileComponent},
+    {path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuard]},
+    {path: 'cart', component: ShoppingCartComponent, canActivate: [AuthenticationGuard]},
     {path: '**', redirectTo: 'login'}
   ]}
 ];

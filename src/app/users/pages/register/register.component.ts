@@ -28,6 +28,7 @@ export class RegisterComponent {
       email: this.email,
       password: this.password,
       phoneNumber: this.phoneNumber,
+      subscriptionDate: new Date(),
       isAdmin: false
     }
 

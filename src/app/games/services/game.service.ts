@@ -12,21 +12,10 @@ export class GameService {
 
   private endpoint: string = "http://localhost:3000/api/v1/videogames/games";
 
-  private logged: boolean = false;
-
   videoGames: Game[] = []
 
   getVideoGames() {
     return this.videoGames;
-  }
-
-  getLogged() {
-    return this.logged;
-    console.log("VALOR: ", this.logged);
-  }
-
-  setLogged(value: boolean) {
-    this.logged = value;
   }
 
   getAllGames(): Observable<Game[]> {    

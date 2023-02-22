@@ -1,1 +1,36 @@
-<p>profile works!</p>
+<div class="grid-cols-1 flex justify-center bg-main min-h-[71.5vh]">
+    <div class="flex justify-center">
+        <div class="flex flex-col md:flex-row md:max-w-6xl my-7 rounded-lg bg-white shadow-lg card">
+            <img src="../../../../assets/iconoPerfilBlanco.png" class="bg-button rounded-full p-3 m-10"
+                alt="Imagen no disponible" width="100px">
+            <div class="p-10 flex flex-col justify-start">
+                <div>
+                    <h5 class="text-white text-3xl font-medium mb-2">{{userLogged.userName | titlecase}}</h5>
+                    <p class="text-gray-600 text-lg">Miembro desde {{userLogged.subscriptionDate | date: 'dd/MM/yyyy'}}</p>
+                </div>
+                <div class="mt-8">
+                    <p class="text-white text-2xl title mb-3">Información de la cuenta</p>
+                    <hr>
+                </div>
+                <div class="mt-5 md:flex-row rounded-lg shadow-lg p-8 card">
+                    <div class="">
+                        <p class="text-white text-lg"><b>Nombre de usuario</b></p>
+                        <p class="text-gray-500">{{userLogged.userName}}</p>
+                    </div>
+                    <div class="mt-5">
+                        <p class="text-white text-lg"><b>Email</b></p>
+                        <p class="text-gray-500">{{userLogged.email}}</p>
+                    </div>
+                    <div class="mt-5">
+                        <p class="text-white text-lg"><b>Teléfono</b></p>
+                        <p class="text-gray-500">{{userLogged.phoneNumber}}</p>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <p class="text-white text-2xl title mb-3">Historial de pedidos</p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

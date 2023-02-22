@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { GameService } from '../../games/services/game.service';
+import { UserService } from '../../users/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +10,11 @@ import { GameService } from '../../games/services/game.service';
 })
 export class HeaderComponent {
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService, private userService: UserService, private router: Router) { }
 
   showMenu: boolean = false;
 
-  logged: boolean = this.gameService.getLogged();
+  logged: boolean = this.userService.getLogged();
 
   getAllGames() {
     this.gameService.getAllGames().subscribe((response: any) => {
@@ -22,18 +24,21 @@ export class HeaderComponent {
 
   toggleMenu() {
     this.showMenu ? this.showMenu = false : this.showMenu = true;
-    this.logged = this.gameService.getLogged();
+    this.logged = this.userService.getLogged();
   }
 
   logOut() {
-    this.gameService.setLogged(false);
+    this.userService.setLogged(false);
   }
 
-  // getLogged(value: any) {
-  //   // value == 1 ? this.gameService.setLogged(true) : this.gameService.setLogged(false);
-  //   console.log(value);
-    
-  //   this.logged = true;
-  // }
+  showCart() {
+    if(this.userService.getLogged()) {
+      alert('LOGUEADO')
+      this.router.navigate(['/user/cart']);
+    } else {
+      alert('INICIA SESIÓN!')
+      this.router.navigate(['/user/login']);
+    }
+  }
 
 }
