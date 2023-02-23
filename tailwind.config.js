@@ -12,7 +12,9 @@ module.exports = {
         'card': '#D5C9FE',
         'button': '#9579DC',
         'button-hover': '#7958C5',
-        'titles': '#9579DC'
+        'titles': '#9579DC',
+        'card': '#01010165',
+        'forms': '#010101B6'
       }
     },
   },

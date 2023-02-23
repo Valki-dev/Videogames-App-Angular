@@ -1,7 +1,6 @@
-<div class="grid-cols-1 bg-main main min-h-[80vh]">
-  <div class="grid-cols-1 flex justify-center">
+<div class="grid-cols-1 flex justify-center bg-main main min-h-[80vh]">
     <div class="flex justify-center">
-      <div class="flex flex-col my-[55px] md:flex-row md:max-w-[1500px] rounded-lg shadow-lg bg-card gameContainer">
+      <div class="flex flex-col my-[55px] md:flex-row md:max-w-[1500px] rounded-lg shadow-lg bg-card">
         <div class="min-w-[550px] min-h-[750px] mr-10">
           <img src="{{game.URL}}" class="rounded-lg w-[550px] h-[750px]" alt="Imagen no disponible">
         </div>
@@ -15,19 +14,19 @@
           </div>
           <hr>
           <div class="flex justify-evenly mt-4">
-            <div class="mt-5 md:flex-row md:max-w-[200px] rounded-lg shadow-lg p-5 card">
+            <div class="mt-5 md:flex-row md:max-w-[200px] rounded-lg shadow-lg p-5 bg-card">
               <p class="text-button-hover"><b>DESARROLADOR</b></p>
               <p class="text-white">{{game.developer}}</p>
             </div>
-            <div class="mt-5 md:flex-row md:max-w-[200px] rounded-lg shadow-lg p-5 card">
+            <div class="mt-5 md:flex-row md:max-w-[200px] rounded-lg shadow-lg p-5 bg-card">
               <p class="text-button-hover"><b>DISTRIBUIDOR</b></p>
               <p class="text-white">{{game.publisher}}</p>
             </div>
-            <div class="mt-5 md:flex-row md:max-w-[200px] rounded-lg shadow-lg p-5 card">
+            <div class="mt-5 md:flex-row md:max-w-[200px] rounded-lg shadow-lg p-5 bg-card">
               <p class="text-button-hover"><b>FECHA DE LANZAMIENTO</b></p>
               <p class="text-white">{{game.releaseDate | date:'dd/MM/yyyy'}}</p>
             </div>
-            <div class="mt-5 md:flex-row md:max-w-[200px] rounded-lg shadow-lg p-5 card">
+            <div class="mt-5 md:flex-row md:max-w-[200px] rounded-lg shadow-lg p-5 bg-card">
               <p class="text-button-hover"><b>GÉNERO</b></p>
               <p class="text-white">{{game.gender}}</p>
             </div>
@@ -49,5 +48,4 @@
         </div>
       </div>
     </div>
-  </div>
 </div>

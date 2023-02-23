@@ -33,6 +33,14 @@ export class UserService {
   // subscriptionDate: new Date(),
   // isAdmin: false
 
+  // id: "202bd904-d7c6-43ce-ac0e-ebe2f7",
+  // userName: "angeles",
+  // email: "angeles@gmail.com ",
+  // password: "1234",
+  // phoneNumber: "645756656",
+  // subscriptionDate: new Date(),
+  // isAdmin: false
+
   getLogged() {
     console.log("VALOR: ", this.logged);
     return this.logged;
@@ -51,7 +59,7 @@ export class UserService {
   }
 
   getUserWishlist(userId: string): Observable<WishlistItem[]> {
-    return  this.httpClient.get<WishlistItem[]>(`${this.endpoint}/wishlist/${userId}`)
+    return this.httpClient.get<WishlistItem[]>(`${this.endpoint}/wishlist/${userId}`)
   }
 
 
