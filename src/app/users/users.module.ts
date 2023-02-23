@@ -13,6 +13,8 @@ import { SharedModule } from '../shared/shared.module';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import {AutoFocusModule} from 'primeng/autofocus';
+import {VirtualScrollerModule} from 'primeng/virtualscroller';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
     HttpClientModule,
     FormsModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AutoFocusModule,
+    VirtualScrollerModule
   ]
 })
 export class UsersModule { }

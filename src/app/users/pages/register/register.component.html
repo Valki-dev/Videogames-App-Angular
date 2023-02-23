@@ -6,7 +6,7 @@
             <form (ngSubmit)="register()" class="flex flex-col items-center px-5">
                 <div class="mt-10 grid-cols-1 w-[100%]">
                     <span class="p-float-label">
-                        <input type="text" id="inputtext" name="userName" class="rounded-lg p-3" pInputText [(ngModel)]="userName">
+                        <input type="text" id="inputtext" name="userName" class="rounded-lg p-3" pInputText pAutoFocus [autofocus]="true" [(ngModel)]="userName">
                         <label for="inputtext">Nombre de usuario</label>
                     </span>
                 </div>

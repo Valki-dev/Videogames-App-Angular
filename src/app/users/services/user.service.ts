@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user.interface';
+import { WishlistItem } from '../interfaces/wishlist.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +11,16 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private logged: boolean = false;
+  private logged: boolean = true;
 
   private endpoint: string = "http://localhost:3000/api/v1/videogames/users";
 
   private userLogged: User = {
-    id: "",
-    userName: "",
-    email: "",
-    password: "",
-    phoneNumber: "",
+    id: "202bd904-d7c6-43ce-ac0e-ebe2f7",
+    userName: "angeles",
+    email: "angeles@gmail.com ",
+    password: "1234",
+    phoneNumber: "645756656",
     subscriptionDate: new Date(),
     isAdmin: false
   }
@@ -49,6 +50,11 @@ export class UserService {
     this.userLogged = user;
   }
 
+  getUserWishlist(userId: string): Observable<WishlistItem[]> {
+    return  this.httpClient.get<WishlistItem[]>(`${this.endpoint}/wishlist/${userId}`)
+  }
+
+
   createUser(user: User): Observable<User> {
     return this.httpClient.post<User>(`${this.endpoint}`, user);
   }
@@ -56,5 +62,6 @@ export class UserService {
   logIn(data: Object): Observable<User[]> {
     return this.httpClient.post<User[]>(`${this.endpoint}/login`, data);
   }
+
 
 }

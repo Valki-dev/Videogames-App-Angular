@@ -36,6 +36,7 @@ export class GameDetailsComponent implements OnInit {
   addToCart() {
     if(this.userService.getLogged()) {
       alert('LOGUEADO');
+      
     } else {
       alert('INICIA SESIÓN!')
       this.router.navigate(['/user/login']);

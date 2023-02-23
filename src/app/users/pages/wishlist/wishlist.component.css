@@ -1,0 +1,15 @@
+.card {
+    background-color: rgba(1, 1, 1, 0.349);
+}
+
+#cart {
+    height: 480px;
+}
+
+.title {
+    font-family: 'Audiowide', cursive;
+}
+
+.rojo {
+    border: 1px solid red;
+}

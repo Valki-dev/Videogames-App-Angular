@@ -1,1 +1,30 @@
-<p>wishlist works!</p>
+<div class="grid-cols-1 flex justify-center bg-main min-h-[71.5vh]">
+    <div class="flex justify-center">
+        <div class="flex flex-col md:flex-row md:max-w-6xl my-7 rounded-lg bg-white shadow-lg card">
+            <div class="p-10 flex flex-col justify-start">
+                <div>
+                    <p class="text-white text-4xl title mb-3">Lista de deseos</p>
+                    <hr>
+                </div>
+                <div class="mt-5 md:flex-row rounded-lg shadow-lg p-5 card overflow-x-auto" id="cart">
+                    <div class="flex flex-col md:flex-row md:max-w-6xl  justify-between items-center border border-gray-500 my-5 rounded-lg p-5" *ngFor="let item of wishlist">
+                        <img src="{{item.URL}}" alt="Imagen no disponible" class="rounded-lg mx-5 w-[200px] h-[230px] md:w-[100px] md:h-[130px] sm:w-[200px] sm:h-[230px]">
+                        <div class="mx-10 my-5 p-2 md:w-[300px] sm:my-5 sm:w-[400px] md:text-sm sm:text-2xl ">
+                            <div>
+                                <p class="text-white text-2xl">{{item.name}}</p>
+                                <p class="text-button-hover text-2xl"><b>{{item.price}}€</b></p>
+                                <p class="text-gray-500 text-lg">{{item.gender}}</p>
+                            </div>
+                        </div>
+                        <div class="mx-10 sm:my-2">
+                            <button pButton pRipple type="button" label="Añadir al carrito" class="p-button-outlined p-button-help" (click)="addToCart()"></button>
+                        </div>
+                        <div class="sm:my-2 my-5">
+                            <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-outlined p-button-secondary" (click)="deleteFromCart()"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
