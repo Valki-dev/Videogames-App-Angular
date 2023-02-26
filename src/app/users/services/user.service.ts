@@ -15,6 +15,8 @@ export class UserService {
 
   private endpoint: string = "http://localhost:3000/api/v1/videogames/users";
 
+  private wishlistEndpoint: string = "http://localhost:3000/api/v1/videogames/wishlist";
+
   private userLogged: User = {
     id: "202bd904-d7c6-43ce-ac0e-ebe2f7",
     userName: "angeles",
@@ -63,12 +65,16 @@ export class UserService {
   }
 
 
-  createUser(user: User): Observable<User> {
-    return this.httpClient.post<User>(`${this.endpoint}`, user);
+  createUser(user: User): Observable<any> {
+    return this.httpClient.post<any>(`${this.endpoint}`, user);
   }
 
   logIn(data: Object): Observable<User[]> {
     return this.httpClient.post<User[]>(`${this.endpoint}/login`, data);
+  }
+
+  deleteFromWishlist(data: any): Observable<any> {
+    return this.httpClient.delete<any>(`${this.wishlistEndpoint}/${data.userId}?productId=${data.productId}`);
   }
 
 

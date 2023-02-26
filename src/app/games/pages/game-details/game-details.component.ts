@@ -24,9 +24,20 @@ export class GameDetailsComponent implements OnInit {
     })
   }
 
-  addToWishlist() {
+  addToWishlist(gameId: number) {
     if(this.userService.getLogged()) {
       alert('LOGUEADO')
+      if(gameId && (this.userService.getUserLogged().id != "")) {
+        const data = {
+          userId: this.userService.getUserLogged().id,
+          productId: gameId
+        }
+
+        this.gameService.addToCart(data).subscribe((response: any) => {
+          
+        })
+      }
+
     } else {
       alert('INICIA SESIÓN!')
       this.router.navigate(['/user/login']);

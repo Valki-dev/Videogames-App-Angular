@@ -3,6 +3,7 @@ import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { HttpErrorResponse, HttpHeaderResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ import { HttpErrorResponse, HttpHeaderResponse } from '@angular/common/http';
 })
 export class RegisterComponent {
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
 
   userName: string = "";
   email: string = "";
@@ -44,6 +45,11 @@ export class RegisterComponent {
         //   // console.log(response);
         //   alert('El usuario ya está registrado en el sistema!')
         // }
+
+        if(response.status === "OK") {
+          console.log(response);
+          this.router.navigate(['/user/login'])
+        }
         
       })
     } else {
