@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user.interface';
 import { Router } from '@angular/router';
-import { ListItem } from '../../interfaces/listItem.interface';
+import { WishlistItem } from '../../interfaces/wishlistItem.interface';
 
 @Component({
   selector: 'app-wishlist',
@@ -12,7 +12,7 @@ import { ListItem } from '../../interfaces/listItem.interface';
 export class WishlistComponent {
   constructor(private userService: UserService, private router: Router) {}
 
-  wishlist: ListItem[] = [];
+  wishlist: WishlistItem[] = [];
   userLogged!: User;
 
 

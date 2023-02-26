@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user.interface';
-import { ListItem } from '../interfaces/listItem.interface';
+import { CartItem } from '../interfaces/cartItem.interface';
+import { WishlistItem } from '../interfaces/wishlistItem.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -62,12 +63,12 @@ export class UserService {
     this.userLogged = user;
   }
 
-  getUserWishlist(userId: string): Observable<ListItem[]> {
-    return this.httpClient.get<ListItem[]>(`${this.endpoint}/wishlist/${userId}`)
+  getUserWishlist(userId: string): Observable<WishlistItem[]> {
+    return this.httpClient.get<WishlistItem[]>(`${this.endpoint}/wishlist/${userId}`)
   }
 
-  getUserShoppingCart(userId: string): Observable<ListItem[]> {
-    return this.httpClient.get<ListItem[]>(`${this.endpoint}/cart/${userId}`);
+  getUserShoppingCart(userId: string): Observable<CartItem[]> {
+    return this.httpClient.get<CartItem[]>(`${this.endpoint}/cart/${userId}`);
   }
 
   createUser(user: User): Observable<any> {
@@ -91,7 +92,11 @@ export class UserService {
   }
 
   deleteFromCart(data: any): Observable<any> {
-    return this.httpClient.delete<any>(`${this.cartEndpoint}/${data.userId}?productId=${data.productId}`)
+    return this.httpClient.delete<any>(`${this.cartEndpoint}/${data.userId}?productId=${data.productId}`);
+  }
+
+  updateAmount(data: any): Observable<Object> {
+    return this.httpClient.patch<Object>(`${this.cartEndpoint}`, data)
   }
 
 }

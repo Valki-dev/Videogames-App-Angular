@@ -11,3 +11,7 @@
 .rojo {
     border: 1px solid red;
 }
+
+#select {
+    background-color: #01010165 !important;
+}

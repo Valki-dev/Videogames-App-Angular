@@ -15,6 +15,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import {AutoFocusModule} from 'primeng/autofocus';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
+import {DropdownModule} from 'primeng/dropdown';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {VirtualScrollerModule} from 'primeng/virtualscroller';
     SharedModule,
     ReactiveFormsModule,
     AutoFocusModule,
-    VirtualScrollerModule
+    VirtualScrollerModule,
+    DropdownModule
   ]
 })
 export class UsersModule { }
