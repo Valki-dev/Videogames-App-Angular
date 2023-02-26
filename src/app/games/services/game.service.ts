@@ -10,9 +10,7 @@ export class GameService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private gamesEndpoint: string = "http://localhost:3000/api/v1/videogames/games";
-
-  private usersEndpoint: string = "http://localhost:3000/api/v1/videogames/users";
+  private endpoint: string = "http://localhost:3000/api/v1/videogames/games";
 
   videoGames: Game[] = []
 
@@ -21,19 +19,15 @@ export class GameService {
   }
 
   getAllGames(): Observable<Game[]> {    
-    return this.httpClient.get<Game[]>(`${this.gamesEndpoint}`);
+    return this.httpClient.get<Game[]>(`${this.endpoint}`);
   }
 
   getGamesByName(search:string): Observable<Game[]> {    
-    return this.httpClient.get<Game[]>(`${this.gamesEndpoint}/search/${search}`);
+    return this.httpClient.get<Game[]>(`${this.endpoint}/search/${search}`);
   }
 
   getGameById(id: number): Observable<Game>{    
-    return this.httpClient.get<Game>(`${this.gamesEndpoint}/${id}`);
-  }
-
-  addToCart(data: Object): Observable<Object> {
-    return this.httpClient.post<Object>(`${this.usersEndpoint}/wishlist`, data);
+    return this.httpClient.get<Game>(`${this.endpoint}/${id}`);
   }
 
 }

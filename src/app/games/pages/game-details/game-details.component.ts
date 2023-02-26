@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Game } from '../../interfaces/game.interface';
 import { GameService } from '../../services/game.service';
 import { UserService } from '../../../users/services/user.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-game-details',
@@ -33,8 +34,11 @@ export class GameDetailsComponent implements OnInit {
           productId: gameId
         }
 
-        this.gameService.addToCart(data).subscribe((response: any) => {
+        // this.gameService.addToCart(data).subscribe((response: any) => {
           
+        // })
+        this.userService.addToWishlist(data).subscribe(response => {
+
         })
       }
 
@@ -44,9 +48,21 @@ export class GameDetailsComponent implements OnInit {
     }
   }
 
-  addToCart() {
+  addToCart(gameId: number) {
     if(this.userService.getLogged()) {
       alert('LOGUEADO');
+      if(gameId && (this.userService.getUserLogged().id != "")) {
+        const data = {
+          userId: this.userService.getUserLogged().id,
+          productId: gameId
+        }
+
+        console.log(data);
+        
+        this.userService.addToCart(data).subscribe(response => {
+
+        })
+      }
       
     } else {
       alert('INICIA SESIÓN!')

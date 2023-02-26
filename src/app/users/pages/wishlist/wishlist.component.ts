@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { WishlistItem } from '../../interfaces/wishlist.interface';
 import { User } from '../../interfaces/user.interface';
 import { Router } from '@angular/router';
+import { ListItem } from '../../interfaces/listItem.interface';
 
 @Component({
   selector: 'app-wishlist',
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class WishlistComponent {
   constructor(private userService: UserService, private router: Router) {}
 
-  wishlist!: WishlistItem[];
+  wishlist: ListItem[] = [];
   userLogged!: User;
 
 
@@ -27,8 +27,24 @@ export class WishlistComponent {
     })
   }
 
-  addToCart() {
-    console.log("HOLA");
+  addToCart(gameId: number) {
+    if(this.userService.getLogged()) {
+      alert('LOGUEADO');
+      if(gameId && (this.userService.getUserLogged().id != "")) {
+        
+        const data = {
+          userId: this.userService.getUserLogged().id,
+          productId: gameId
+        }
+        this.userService.addToCart(data).subscribe(response => {
+
+        })
+      }
+      
+    } else {
+      alert('INICIA SESIÓN!')
+      this.router.navigate(['/user/login']);
+    }
   }
 
   deleteFromWishlist(productId: number) {
@@ -47,13 +63,11 @@ export class WishlistComponent {
               this.wishlist = response;
             }
           })
-          console.log("ENTRA");
           this.router.navigate(['/user/wishlist']);
         }
         
       })
     }
-    console.log("HOLA");
   }
 
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user.interface';
-import { WishlistItem } from '../interfaces/wishlist.interface';
+import { ListItem } from '../interfaces/listItem.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,8 @@ export class UserService {
   private endpoint: string = "http://localhost:3000/api/v1/videogames/users";
 
   private wishlistEndpoint: string = "http://localhost:3000/api/v1/videogames/wishlist";
+
+  private cartEndpoint: string = "http://localhost:3000/api/v1/videogames/cart";
 
   private userLogged: User = {
     id: "202bd904-d7c6-43ce-ac0e-ebe2f7",
@@ -60,10 +62,13 @@ export class UserService {
     this.userLogged = user;
   }
 
-  getUserWishlist(userId: string): Observable<WishlistItem[]> {
-    return this.httpClient.get<WishlistItem[]>(`${this.endpoint}/wishlist/${userId}`)
+  getUserWishlist(userId: string): Observable<ListItem[]> {
+    return this.httpClient.get<ListItem[]>(`${this.endpoint}/wishlist/${userId}`)
   }
 
+  getUserShoppingCart(userId: string): Observable<ListItem[]> {
+    return this.httpClient.get<ListItem[]>(`${this.endpoint}/cart/${userId}`);
+  }
 
   createUser(user: User): Observable<any> {
     return this.httpClient.post<any>(`${this.endpoint}`, user);
@@ -73,9 +78,20 @@ export class UserService {
     return this.httpClient.post<User[]>(`${this.endpoint}/login`, data);
   }
 
+  addToWishlist(data: Object): Observable<Object> {
+    return this.httpClient.post<Object>(`${this.endpoint}/wishlist`, data);
+  }
+
+  addToCart(data: Object): Observable<Object> {
+    return this.httpClient.post<Object>(`${this.endpoint}/cart`, data);
+  }
+
   deleteFromWishlist(data: any): Observable<any> {
     return this.httpClient.delete<any>(`${this.wishlistEndpoint}/${data.userId}?productId=${data.productId}`);
   }
 
+  deleteFromCart(data: any): Observable<any> {
+    return this.httpClient.delete<any>(`${this.cartEndpoint}/${data.userId}?productId=${data.productId}`)
+  }
 
 }

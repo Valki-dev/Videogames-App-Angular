@@ -1,4 +1,4 @@
-export interface WishlistItem {
+export interface ListItem {
     userId:      string;
     productId:   number;
     id:          number;
