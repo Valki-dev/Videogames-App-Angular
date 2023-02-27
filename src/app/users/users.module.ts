@@ -16,6 +16,8 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
 import {AutoFocusModule} from 'primeng/autofocus';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
 import {DropdownModule} from 'primeng/dropdown';
+import { PayingPageComponent } from './pages/paying-page/paying-page.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import {DropdownModule} from 'primeng/dropdown';
     RegisterComponent,
     WishlistComponent,
     ProfileComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    PayingPageComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +41,8 @@ import {DropdownModule} from 'primeng/dropdown';
     ReactiveFormsModule,
     AutoFocusModule,
     VirtualScrollerModule,
-    DropdownModule
+    DropdownModule,
+    RouterModule
   ]
 })
 export class UsersModule { }

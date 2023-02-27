@@ -99,11 +99,9 @@ export class ShoppingCartComponent {
           this.userService.deleteFromCart(deleteData).subscribe(response => {
 
           })
-          this.router.navigate(['/games/all'])
+          this.router.navigate(['/user/paying'])
         }
-        
       })
-      
     });
   }
 

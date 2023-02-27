@@ -6,6 +6,7 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { PayingPageComponent } from './pages/paying-page/paying-page.component';
 
 const routes: Routes = [
   {path: '', children: [
@@ -14,6 +15,7 @@ const routes: Routes = [
     {path: 'wishlist', component: WishlistComponent, canActivate: [AuthenticationGuard]},
     {path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuard]},
     {path: 'cart', component: ShoppingCartComponent, canActivate: [AuthenticationGuard]},
+    {path: 'paying', component: PayingPageComponent, canActivate:[AuthenticationGuard]},
     {path: '**', redirectTo: 'login'}
   ]}
 ];
