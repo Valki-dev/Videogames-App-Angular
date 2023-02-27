@@ -30,4 +30,8 @@ export class GameService {
     return this.httpClient.get<Game>(`${this.endpoint}/${id}`);
   }
 
+  updateGame(updateData: Object): Observable<any> {
+    return this.httpClient.patch<any>(`${this.endpoint}`, updateData);
+  }
+
 }

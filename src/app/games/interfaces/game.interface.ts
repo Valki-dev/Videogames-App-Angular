@@ -6,7 +6,7 @@ export interface Game {
     releaseDate: string,
     gender: string,
     description: string,
-    stok: number,
+    stock: number,
     price: number,
     available: boolean,
     onOffer: boolean,

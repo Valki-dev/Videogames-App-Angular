@@ -3,10 +3,8 @@ import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { CartItem } from '../../interfaces/cartItem.interface';
+import { GameService } from '../../../games/services/game.service';
 
-interface Amount {
-  name: string
-}
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,23 +14,7 @@ interface Amount {
 
 export class ShoppingCartComponent {
 
-  amounts: Amount[];
-  selectedAmount?: Amount;
-
-  constructor(private userService: UserService, private router: Router) {
-    this.amounts = [
-      { name: "1"},
-      { name: "2"},
-      { name: "3"},
-      { name: "4"},
-      { name: "5"},
-      { name: "6"},
-      { name: "7"},
-      { name: "8"},
-      { name: "9"},
-      { name: "10"},
-    ];
-  }
+  constructor(private userService: UserService, private gameService: GameService, private router: Router) { }
 
   userLogged!: User;
   cart: CartItem[] = [];
@@ -47,13 +29,14 @@ export class ShoppingCartComponent {
     this.userService.getUserShoppingCart(this.userLogged.id).subscribe(response => {
       if (response) {
         this.cart = response;
-        this.total = Number(this.calculateTotal().toFixed(2));
+        this.total = this.calculateTotal();
       }
     }) 
   }
 
   calculateTotal() {
-    return this.cart.reduce((total, item) => total += (item.price * item.amount), 0);
+    let totalAmount = this.cart.reduce((total, item) => total += (item.price * item.amount), 0);
+    return Number(totalAmount.toFixed(2))
   }
 
   deleteFromCart(productId: number) {
@@ -75,7 +58,6 @@ export class ShoppingCartComponent {
           })
           this.router.navigate(['/user/cart']);
         }
-
       })
     }
   }
@@ -100,6 +82,29 @@ export class ShoppingCartComponent {
         })
       }
     }
+  }
+
+  pay() {
+    this.cart.forEach(item => {
+      let updateData = {
+        productId: item.productId,
+        amount: item.amount
+      }
+      this.gameService.updateGame(updateData).subscribe(response => {
+        if(response.status === "OK") {
+          let deleteData = {
+            userId: this.userService.getUserLogged().id,
+            productId: item.productId
+          }
+          this.userService.deleteFromCart(deleteData).subscribe(response => {
+
+          })
+          this.router.navigate(['/games/all'])
+        }
+        
+      })
+      
+    });
   }
 
 }
