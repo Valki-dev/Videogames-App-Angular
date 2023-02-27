@@ -36,7 +36,6 @@ export class ShoppingCartComponent {
 
   userLogged!: User;
   cart: CartItem[] = [];
-  selectedOption: string = "0";
   total: number = 0;
 
   ngOnInit(): void {
@@ -48,7 +47,7 @@ export class ShoppingCartComponent {
     this.userService.getUserShoppingCart(this.userLogged.id).subscribe(response => {
       if (response) {
         this.cart = response;
-        this.total = this.calculateTotal();
+        this.total = Number(this.calculateTotal().toFixed(2));
       }
     }) 
   }
@@ -71,6 +70,7 @@ export class ShoppingCartComponent {
           this.userService.getUserShoppingCart(this.userLogged.id).subscribe(response => {
             if (response) {
               this.cart = response;
+              this.total = this.calculateTotal();
             }
           })
           this.router.navigate(['/user/cart']);
@@ -80,18 +80,23 @@ export class ShoppingCartComponent {
     }
   }
 
-  changeAmount(productId: number) {
-    console.log(this.selectedOption);
+  changeAmount(productId: number, selectValue: any) {
+    console.log({selectValue});
+
     if(this.userService.getLogged()) {
       if(productId && (this.userService.getUserLogged().id)) {
         const data = {
           userId: this.userService.getUserLogged().id,
           productId: productId,
-          amount: this.selectedOption
+          amount: Number(selectValue)
         }
 
         this.userService.updateAmount(data).subscribe(response => {
-          
+          if(response) {
+            this.getUserShoppingCart();
+            this.total = this.calculateTotal();
+            this.router.navigate(['/user/cart']);
+          }
         })
       }
     }

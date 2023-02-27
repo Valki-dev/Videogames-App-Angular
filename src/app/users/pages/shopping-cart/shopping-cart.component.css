@@ -15,3 +15,7 @@
 #select {
     background-color: #01010165 !important;
 }
+
+button {
+    width: 100px;
+}

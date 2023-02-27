@@ -27,7 +27,6 @@ export class GameDetailsComponent implements OnInit {
 
   addToWishlist(gameId: number) {
     if(this.userService.getLogged()) {
-      alert('LOGUEADO')
       if(gameId && (this.userService.getUserLogged().id != "")) {
         const data = {
           userId: this.userService.getUserLogged().id,
@@ -50,7 +49,6 @@ export class GameDetailsComponent implements OnInit {
 
   addToCart(gameId: number) {
     if(this.userService.getLogged()) {
-      alert('LOGUEADO');
       if(gameId && (this.userService.getUserLogged().id != "")) {
         const data = {
           userId: this.userService.getUserLogged().id,

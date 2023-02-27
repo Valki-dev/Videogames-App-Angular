@@ -33,7 +33,6 @@ export class HeaderComponent {
 
   showCart() {
     if(this.userService.getLogged()) {
-      alert('LOGUEADO')
       this.router.navigate(['/user/cart']);
     } else {
       alert('INICIA SESIÓN!')

@@ -1,10 +1,10 @@
 <div class="grid-cols-1 flex justify-center min-h-[71.5vh] bg-main">
-    <div class="flex justify-center">
-        <div class="flex flex-col md:flex-row md:max-w-6xl my-7 rounded-lg bg-white shadow-lg bg-card">
+    <div class="flex justify-evenly xl:flex-row xl:w-[100%] lg:flex-row lg:w-[100%] md:flex-col md:w-[90%] sm:flex-col sm:w-[90%] flex-col w-[90%]">
+        <div class="flex flex-col  my-7 rounded-lg bg-white shadow-lg bg-card">
             <div class="p-10 flex flex-col justify-start">
                 <div>
                     <p class="text-white text-4xl title mb-3">Lista de deseos</p>
-                    <hr>
+                    <hr class="md:w-[90%]">
                 </div>
                 <div class="mt-5 xl:h-[200px] md:flex-row rounded-lg shadow-lg p-5 overflow-x-auto bg-card" id="cart"
                     *ngIf="wishlist.length > 0; else empty">
@@ -12,18 +12,18 @@
                         *ngFor="let item of wishlist">
                         <img src="{{item.URL}}" alt="Imagen no disponible"
                             class="rounded-lg mx-5 w-[200px] h-[230px] md:w-[100px] md:h-[130px] sm:w-[200px] sm:h-[230px]">
-                        <div class="mx-10 my-5 p-2 md:w-[300px] sm:my-5 sm:w-[400px] md:text-sm sm:text-2xl ">
+                        <div class="mx-10 my-5 p-2 md:w-[300px] sm:my-5 sm:w-[400px] md:text-sm sm:text-2xl w-[150px]">
                             <div>
                                 <p class="text-white text-2xl">{{item.name}}</p>
                                 <p class="text-button-hover text-2xl"><b>{{item.price}}€</b></p>
                                 <p class="text-gray-500 text-lg">{{item.gender}}</p>
                             </div>
                         </div>
-                        <div class="mx-10 sm:my-2">
+                        <div class="mx-5 sm:my-2">
                             <button pButton pRipple type="button" label="Añadir al carrito"
                                 class="p-button-outlined p-button-help" (click)="addToCart(item.productId)"></button>
                         </div>
-                        <div class="sm:my-2 my-5">
+                        <div class="sm:my-2 my-5 mx-5">
                             <button pButton pRipple type="button" icon="pi pi-trash"
                                 class="p-button-outlined p-button-secondary" (click)="deleteFromWishlist(item.productId)"></button>
                         </div>
