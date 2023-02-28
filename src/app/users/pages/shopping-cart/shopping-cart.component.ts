@@ -92,11 +92,16 @@ export class ShoppingCartComponent {
       }
       this.gameService.updateGame(updateData).subscribe(response => {
         if(response.status === "OK") {
-          let deleteData = {
+          let data = {
             userId: this.userService.getUserLogged().id,
             productId: item.productId
           }
-          this.userService.deleteFromCart(deleteData).subscribe(response => {
+
+          this.userService.addToSales(data).subscribe(response => {
+            
+          })
+
+          this.userService.deleteFromCart(data).subscribe(response => {
 
           })
           this.router.navigate(['/user/paying'])

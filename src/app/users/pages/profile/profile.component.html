@@ -1,18 +1,20 @@
 <div class="grid-cols-1 flex justify-center bg-main min-h-[71.5vh]">
     <div class="flex justify-center">
-        <div class="flex flex-col md:flex-row md:max-w-6xl my-7 rounded-lg bg-white shadow-lg card">
-            <img src="../../../../assets/iconoPerfilBlanco.png" class="bg-button rounded-full p-3 m-10"
-                alt="Imagen no disponible" width="100px">
-            <div class="p-10 flex flex-col justify-start">
+        <div class="flex flex-col xl:w-[1000px] lg:w-[980px] md:w-[720px] sm:w-[600px] w-[350px] md:flex-row my-7 rounded-lg bg-white shadow-lg bg-card">
+            <div class="flex sm:flex sm:justify-center justify-center">
+                <img src="../../../../assets/iconoPerfilBlanco.png" class="lg:w-[100px] bg-button rounded-full p-3 m-10" alt="Imagen no disponible" width="100px">
+            </div>
+            <div class="flex xl:w-[80%] xl:pt-10 lg:w-[80%] lg:pt-10 md:w-[80%] md:pt-10 sm:pt-0 pt-0 flex-col justify-start p-10">
                 <div>
                     <h5 class="text-white text-3xl font-medium mb-2">{{userLogged.userName | titlecase}}</h5>
-                    <p class="text-gray-600 text-lg">Miembro desde {{userLogged.subscriptionDate | date: 'dd/MM/yyyy'}}</p>
+                    <p class="text-gray-600 text-lg">Miembro desde {{userLogged.subscriptionDate | date: 'dd/MM/yyyy'}}
+                    </p>
                 </div>
                 <div class="mt-8">
                     <p class="text-white text-2xl title mb-3">Información de la cuenta</p>
                     <hr>
                 </div>
-                <div class="mt-5 md:flex-row rounded-lg shadow-lg p-8 card">
+                <div class="mt-5 md:flex-row rounded-lg shadow-lg p-8 bg-card">
                     <div class="">
                         <p class="text-white text-lg"><b>Nombre de usuario</b></p>
                         <p class="text-gray-500">{{userLogged.userName}}</p>
@@ -25,10 +27,42 @@
                         <p class="text-white text-lg"><b>Teléfono</b></p>
                         <p class="text-gray-500">{{userLogged.phoneNumber}}</p>
                     </div>
+                    <div class="mt-2 flex justify-end">
+                        <button pButton pRipple type="button" icon="pi pi-pencil"
+                            class="p-button p-button-help p-button-outlined mr-7"></button>
+                    </div>
                 </div>
                 <div class="mt-8">
-                    <p class="text-white text-2xl title mb-3">Historial de pedidos</p>
-                    <hr>
+                    <div>
+                        <p class="text-white text-2xl title mb-3">Historial de pedidos</p>
+                        <hr>
+                    </div>
+                    <div class="mt-5 xl:max-h-[300px] lg:max-h-[300px] md:max-h-[300px] sm:max-h-[300px] md:flex-row max-h-[300px] rounded-lg shadow-lg py-1 px-2 overflow-x-auto bg-card"
+                        id="cart" *ngIf="sales.length > 0; else empty">
+                        <div class="flex flex-col md:flex-row justify-center items-center border border-gray-500 my-5 rounded-lg"
+                            *ngFor="let sale of sales">
+                            <div class="flex justify-around items-center p-3 xl:flex-row lg:flex-row md:flex-col xl:w-[100%] lg:w-[100%] md:justify-center sm:flex-col w-[100%] flex-col">
+                                <div class="flex justify-evenly items-center xl:w-[300px] xl:h-[100px] lg:w-[300px] lg:h-[100px] md:w-[200px] md:h-[110px] sm:w-[300px]">
+                                    <img src="{{sale.URL}}" alt="Imagen no disponible"
+                                        class="rounded-lg mx-5 h-[230px] xl:w-[100px] xl:h-[130px] md:w-[100px] md:h-[200px] sm:w-[100px] sm:h-[230px] w-[100px]">
+                                </div>
+                                <div class="flex mx-10 my-5 p-2 xl:w-[900px] lg:w-[900px] md:w-[300px] sm:my-5 sm:w-[400px] md:text-sm sm:text-2xl w-[100%]">
+                                    <p class="text-white text-lg md:my-0 md:text-center md:w-[100%] sm:w-[100%] sm:text-center w-[100%] text-center">{{sale.name}}</p>
+                                </div>
+                                <div class="mx-3 sm:m-0 md:m-0 m-0">
+                                    <p class="text-gray-500 text-lg">{{sale.saleDate | date:"dd/MM/yyyy"}}</p>
+                                </div>
+                                <div class="mx-3 sm:my-2">
+                                    <p class="text-button-hover text-xl"><b>{{sale.price}}€</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-template #empty>
+                        <div class="bg-card rounded-lg mt-5">
+                            <p class="text-2xl text-white p-10 text-center">Aún no has comprado ningún producto</p>
+                        </div>
+                    </ng-template>
                 </div>
             </div>
         </div>

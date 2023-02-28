@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../interfaces/user.interface';
 import { CartItem } from '../interfaces/cartItem.interface';
 import { WishlistItem } from '../interfaces/wishlistItem.interface';
+import { Sale } from '../interfaces/sale.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -71,6 +72,10 @@ export class UserService {
     return this.httpClient.get<CartItem[]>(`${this.endpoint}/cart/${userId}`);
   }
 
+  getUserSales(userId: string): Observable<Sale[]> {
+    return this.httpClient.get<Sale[]>(`${this.endpoint}/sales/${userId}`);
+  }
+
   createUser(user: User): Observable<any> {
     return this.httpClient.post<any>(`${this.endpoint}`, user);
   }
@@ -85,6 +90,10 @@ export class UserService {
 
   addToCart(data: Object): Observable<Object> {
     return this.httpClient.post<Object>(`${this.endpoint}/cart`, data);
+  }
+
+  addToSales(data: Object): Observable<Object> {
+    return this.httpClient.post<Object>(`${this.endpoint}/sale`, data);
   }
 
   deleteFromWishlist(data: any): Observable<any> {
