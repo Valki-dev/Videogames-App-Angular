@@ -13,6 +13,7 @@ export class HeaderComponent {
   constructor(private gameService: GameService, private userService: UserService, private router: Router) { }
 
   showMenu: boolean = false;
+  showMobileMenu: boolean = false;
 
   logged: boolean = this.userService.getLogged();
 
@@ -38,6 +39,10 @@ export class HeaderComponent {
       alert('INICIA SESIÓN!')
       this.router.navigate(['/user/login']);
     }
+  }
+
+  toggleMobileMenu() {
+    this.showMobileMenu ? this.showMobileMenu = false : this.showMobileMenu = true;
   }
 
 }
