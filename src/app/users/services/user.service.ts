@@ -13,7 +13,7 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private logged: boolean = true;
+  private logged: boolean = false;
 
   private endpoint: string = "http://localhost:3000/api/v1/videogames/users";
 
@@ -21,31 +21,7 @@ export class UserService {
 
   private cartEndpoint: string = "http://localhost:3000/api/v1/videogames/cart";
 
-  private userLogged: User = {
-    id: "202bd904-d7c6-43ce-ac0e-ebe2f7",
-    userName: "angeles",
-    email: "angeles@gmail.com ",
-    password: "1234",
-    phoneNumber: "645756656",
-    subscriptionDate: new Date(),
-    isAdmin: false
-  }
-
-  // id: "0d29beff-1b33-4691-a771-0c1cb5",
-  // userName: "Antonio_Database",
-  // email: "antoniodatabase@gmail.com",
-  // password: "1234",
-  // phoneNumber: "658942357",
-  // subscriptionDate: new Date(),
-  // isAdmin: false
-
-  // id: "202bd904-d7c6-43ce-ac0e-ebe2f7",
-  // userName: "angeles",
-  // email: "angeles@gmail.com ",
-  // password: "1234",
-  // phoneNumber: "645756656",
-  // subscriptionDate: new Date(),
-  // isAdmin: false
+  private userLogged!: User
 
   getLogged() {
     console.log("VALOR: ", this.logged);
@@ -62,6 +38,10 @@ export class UserService {
 
   setUserLogged(user: User) {
     this.userLogged = user;
+  }
+
+  getUserById(userId: string): Observable<User[]> {
+    return this.httpClient.get<User[]>(`${this.endpoint}/${userId}`)
   }
 
   getUserWishlist(userId: string): Observable<WishlistItem[]> {
@@ -106,6 +86,10 @@ export class UserService {
 
   updateAmount(data: any): Observable<Object> {
     return this.httpClient.patch<Object>(`${this.cartEndpoint}`, data)
+  }
+
+  updateUser(data: any): Observable<Object> {
+    return this.httpClient.patch<Object>(`${this.endpoint}`, data)
   }
 
 }

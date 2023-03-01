@@ -20,8 +20,6 @@
                                 </div>
                             </div>
                             <div class="mx-10 sm:my-2">
-                                <!-- <p-dropdown [options]="amounts" [(ngModel)]="selectedAmount" id="select"
-                                    placeholder="Cantidad" optionLabel="name" [showClear]="true" dataKey="value" onchange="changeAmount()"></p-dropdown> -->
                                 <select [value]="item.amount" #select name="amounts" id="" class="bg-card text-white rounded-lg" (change)="changeAmount(item.productId, select.value)">
                                     <option value="1">1</option>
                                     <option value="2">2</option>

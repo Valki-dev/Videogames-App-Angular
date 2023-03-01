@@ -24,9 +24,12 @@ export class LoginComponent {
       }
 
       this.userService.logIn(data).subscribe(response => {
-        if(response) {
+        if(response.length > 0) {
 
           let user: User = response[0];
+
+          console.log(response);
+          
           
           this.userService.setUserLogged(user);
 

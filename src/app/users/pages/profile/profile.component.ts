@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
 import { Sale } from '../../interfaces/sale.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -10,15 +11,17 @@ import { Sale } from '../../interfaces/sale.interface';
 })
 export class ProfileComponent {
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   userLogged!: User;
   sales: Sale[] = [];
+  showUpdateUser: boolean = false;
+  password: string = "";
+  password2: string = "";
 
   ngOnInit(): void {
     this.userLogged = this.userService.getUserLogged();
-    console.log(this.userLogged);
-    this.getUserSales(); 
+    this.getUserSales();
   }
 
   getUserSales() {
@@ -28,6 +31,44 @@ export class ProfileComponent {
       }
     })
   }
+
+  updateUserData(userName: string, email: string, phoneNumber: string) {
+    if((userName.trim() != "") && (email.trim() != "") && (phoneNumber.trim() != "") && (this.password.trim() != "") && (this.password2.trim() != "")) {
+      if(this.password === this.password2) {
+        const updateData = {
+          userId: this.userLogged.id,
+          userName: userName,
+          email: email,
+          password: this.password,
+          phoneNumber: phoneNumber,
+          subscriptionDate: this.userLogged.subscriptionDate
+        }
+
+        this.userService.updateUser(updateData).subscribe(response => {
+          console.log(response);
+          
+          if(response) {
+            this.userService.getUserById(this.userLogged.id).subscribe(response => {
+              if(response.length > 0) {
+                console.log("USUARIO", response);
+                
+                this.userLogged = response[0];
+                this.userService.setUserLogged(response[0]);
+                this.showUpdateUser = false;
+                this.router.navigate(['/user/profile']);
+              }
+            })
+          }
+        })
   
+      }  
+    }
+    
+  }
+
+  showForm() {
+    this.showUpdateUser = true;
+    this.router.navigate(['/user/profile']);
+  }
 
 }

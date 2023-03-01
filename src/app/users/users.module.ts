@@ -13,9 +13,9 @@ import { SharedModule } from '../shared/shared.module';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
-import {AutoFocusModule} from 'primeng/autofocus';
-import {VirtualScrollerModule} from 'primeng/virtualscroller';
-import {DropdownModule} from 'primeng/dropdown';
+import { AutoFocusModule } from 'primeng/autofocus';
+import { VirtualScrollerModule } from 'primeng/virtualscroller';
+import { DropdownModule } from 'primeng/dropdown';
 import { PayingPageComponent } from './pages/paying-page/paying-page.component';
 import { RouterModule } from '@angular/router';
 

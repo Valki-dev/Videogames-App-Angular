@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Game } from '../../interfaces/game.interface';
 import { GameService } from '../../services/game.service';
 import { UserService } from '../../../users/services/user.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-game-details',
