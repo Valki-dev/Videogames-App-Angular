@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { GameService } from '../../games/services/game.service';
 import { UserService } from '../../users/services/user.service';
 import { Router } from '@angular/router';
@@ -15,14 +15,9 @@ export class HeaderComponent {
   showMenu: boolean = false;
   showMobileMenu: boolean = false;
   sortingMethod: string = "all";
+  showGenders: boolean = false;
 
   logged: boolean = this.userService.getLogged();
-
-  @Output() onSort: EventEmitter<string> = new EventEmitter<string>();
-
-  sortGames(method: string) {
-    this.onSort.emit(method);
-  }
 
   getAllGames() {
     this.gameService.getAllGames().subscribe((response: any) => {
@@ -31,8 +26,6 @@ export class HeaderComponent {
         this.gameService.originalGames = [...response];
       }
     })    
-
-    this.sortGames(this.sortingMethod)
   }
 
   getNewGames() {
@@ -40,6 +33,25 @@ export class HeaderComponent {
       if(response) {
         this.gameService.videoGames = [...response];
         this.gameService.originalGames = [...response]
+      }
+    })
+  }
+
+  getOnOfferGames() {
+    this.gameService.getOnOfferGames().subscribe(response => {
+      if(response) {
+        this.gameService.videoGames = [...response];
+        this.gameService.originalGames = [...response];
+      }
+    })
+  }
+
+  getGamesByGender(gender: string) {
+    this.gameService.getGamesByGender(gender).subscribe(response => {
+      if(response) {
+        this.gameService.videoGames = [...response];
+        this.gameService.originalGames = [...response];
+        this.toggleShowGenders();
       }
     })
   }
@@ -64,6 +76,10 @@ export class HeaderComponent {
 
   toggleMobileMenu() {
     this.showMobileMenu ? this.showMobileMenu = false : this.showMobileMenu = true;
+  }
+
+  toggleShowGenders() {
+    this.showGenders ? this.showGenders = false : this.showGenders =  true;
   }
 
   // INSERT INTO products (name, developer, publisher, releaseDate, gender, description, stock, price, available, onOffer, isNew, URL)VALUES("", "", "", "", "", "", 200, 0, true, false, true, "");

@@ -14,6 +14,10 @@ export class GameService {
 
   private newGamesEndpoint: string = "http://localhost:3000/api/v1/videogames/new";
 
+  private onOfferGamesEndpoint: string = "http://localhost:3000/api/v1/videogames/offers";
+
+  private byGenderEndpoint: string = "http://localhost:3000/api/v1/videogames/gender";
+
   videoGames: Game[] = [];
   originalGames: Game[] = [];
 
@@ -35,6 +39,14 @@ export class GameService {
 
   getNewGames(): Observable<Game[]> {
     return this.httpClient.get<Game[]>(`${this.newGamesEndpoint}`);
+  }
+
+  getOnOfferGames(): Observable<Game[]> {
+    return this.httpClient.get<Game[]>(`${this.onOfferGamesEndpoint}`)
+  }
+
+  getGamesByGender(gender: string): Observable<Game[]> {
+    return this.httpClient.get<Game[]>(`${this.byGenderEndpoint}?gender=${gender}`);
   }
 
   updateGame(updateData: Object): Observable<any> {

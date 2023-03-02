@@ -9,7 +9,7 @@
       <div class="mt-5">
         <div class="flex flex-row h-[50px]">
           <button pButton pRipple type="button" label="Orderar por ▽" class="p-button-outlined p-button-help"
-            (click)="toggleShowOptions()" (onSort)="sortGames($event)"></button>
+            (click)="toggleShowOptions()"></button>
             <div *ngIf="methodSelected">
               <button class="bg-gray-800 hover:bg-gray-600 rounded-full w-[30px] h-[30px] text-white" (click)="clearSort()">X</button>
             </div>
