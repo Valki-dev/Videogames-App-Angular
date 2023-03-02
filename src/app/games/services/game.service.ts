@@ -12,7 +12,10 @@ export class GameService {
 
   private endpoint: string = "http://localhost:3000/api/v1/videogames/games";
 
-  videoGames: Game[] = []
+  private newGamesEndpoint: string = "http://localhost:3000/api/v1/videogames/new";
+
+  videoGames: Game[] = [];
+  originalGames: Game[] = [];
 
   getVideoGames() {
     return this.videoGames;
@@ -28,6 +31,10 @@ export class GameService {
 
   getGameById(id: number): Observable<Game>{    
     return this.httpClient.get<Game>(`${this.endpoint}/${id}`);
+  }
+
+  getNewGames(): Observable<Game[]> {
+    return this.httpClient.get<Game[]>(`${this.newGamesEndpoint}`);
   }
 
   updateGame(updateData: Object): Observable<any> {

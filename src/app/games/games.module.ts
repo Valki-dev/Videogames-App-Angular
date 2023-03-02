@@ -8,6 +8,7 @@ import { InputComponent } from './sharedGames/input/input.component';
 import { FormsModule } from '@angular/forms';
 import { GameDetailsComponent } from './pages/game-details/game-details.component';
 import { ButtonModule } from 'primeng/button';
+import { SortGamesPipe } from './pipes/sort-games.pipe';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ButtonModule } from 'primeng/button';
     AllListComponent,
     InputComponent,
     InputComponent,
-    GameDetailsComponent
+    GameDetailsComponent,
+    SortGamesPipe
   ],
   imports: [
     CommonModule,

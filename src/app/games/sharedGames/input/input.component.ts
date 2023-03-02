@@ -11,7 +11,7 @@ export class InputComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   @Input() placeholder: string = "";
 
   @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
