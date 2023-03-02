@@ -128,7 +128,26 @@
                     aria-current="page" (click)="toggleMobileMenu()">Ofertas</a>
 
                 <a routerLink="/games/all" class="text-white block px-3 py-2 rounded-md text-base font-medium"
-                    aria-current="page" (click)="toggleMobileMenu()">Género</a>
+                    aria-current="page" (click)="toggleShowMobileGenders()">Género ▽</a>
+            </div>
+            <div class="flex mr-10 overflox-x-auto bg-card rounded-lg mt-2 max-w-[450px]" *ngIf="showMobileGenders">
+                <div
+                    class="flex flex-col flex-wrap sm:max-w-[700px] justify-center space-y-3 p-3 md:p-2 sm:p-0 sm:flex-row sm:space-x-1 sm:space-y-0">
+                    <a routerLink="/games/all"
+                        class="text-gray-300 hover:bg-button-hover w-[420px] hover:text-white px-3 py-2 rounded-md text-md font-medium" (click)="getGamesByGender('Acción')">Acción</a>
+
+                    <a routerLink="/games/all"
+                        class="text-gray-300 hover:bg-button-hover hover:text-white px-3 py-2 rounded-md text-md font-medium" (click)="getGamesByGender('Aventura')">Aventura</a>
+
+                    <a routerLink="/games/all"
+                        class="text-gray-300 hover:bg-button-hover hover:text-white px-3 py-2 rounded-md text-md font-medium" (click)="getGamesByGender('Estrategia')">Estrategia</a>
+
+                    <a routerLink="/games/all"
+                        class="text-gray-300  hover:bg-button-hover hover:text-white px-3 py-2 rounded-md text-md font-medium" (click)="getGamesByGender('Indie')">Indie</a>
+
+                    <a routerLink="/games/all"
+                        class="text-gray-300  hover:bg-button-hover hover:text-white px-3 py-2 rounded-md text-sm font-medium" (click)="getGamesByGender('Simulación')">Simulación</a>
+                </div>
             </div>
         </div>
     </nav>

@@ -16,6 +16,7 @@ export class HeaderComponent {
   showMobileMenu: boolean = false;
   sortingMethod: string = "all";
   showGenders: boolean = false;
+  showMobileGenders: boolean = false;
 
   logged: boolean = this.userService.getLogged();
 
@@ -80,6 +81,10 @@ export class HeaderComponent {
 
   toggleShowGenders() {
     this.showGenders ? this.showGenders = false : this.showGenders =  true;
+  }
+
+  toggleShowMobileGenders() {
+    this.showMobileGenders ? this.showMobileGenders = false : this.showMobileGenders = true;
   }
 
   // INSERT INTO products (name, developer, publisher, releaseDate, gender, description, stock, price, available, onOffer, isNew, URL)VALUES("", "", "", "", "", "", 200, 0, true, false, true, "");
