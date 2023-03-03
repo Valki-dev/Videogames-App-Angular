@@ -3,19 +3,67 @@
         <div class="p-[40px] my-7 rounded-lg shadow-lg min-w-4xl bg-forms">
             <h1 class="text-white text-4xl leading-tight font-medium mb-2">Inicio de sesión</h1>
             <hr>
-            <form (ngSubmit)="logIn()" class="flex flex-col items-center px-5">
+            <form [formGroup]="loginForm" (ngSubmit)="logIn()" class="flex flex-col items-center px-5">
                 <div class="mt-10 grid-cols-1 w-[100%]">
-                    <span class="p-float-label">
-                        <input type="text" id="inputtext" name="email" class="rounded-lg p-3" pInputText pAutoFocus [autofocus]="true" [(ngModel)]="email">
-                        <label for="inputtext">Email</label>
-                    </span>
+                    <div *ngIf="!email?.valid && (email?.dirty || email?.touched); else emailGood">
+                        <span class="p-float-label">
+                            <input type="email" id="inputtext" name="email" formControlName="email"
+                                class="rounded-lg p-3 border border-red-500" pInputText>
+                            <label for="inputtext">Email</label>
+                        </span>
+                        <div [hidden]="!email?.errors?.['required']" class="flex justify-center text-red-400">
+                            Debes introducir un email válido
+                        </div>
+                    </div>
+                    <ng-template #emailGood>
+                        <div *ngIf="loginError; else notError">
+                            <span class="p-float-label">
+                                <input type="email" id="inputtext" name="email" formControlName="email"
+                                    class="rounded-lg p-3 border border-red-500" pInputText>
+                                <label for="inputtext">Email</label>
+                            </span>
+                        </div>
+                        <ng-template #notError>
+                            <span class="p-float-label">
+                                <input type="text" id="inputtext" name="email" formControlName="email"
+                                    class="rounded-lg p-3" pInputText>
+                                <label for="inputtext">Email</label>
+                            </span>
+                        </ng-template>
+                    </ng-template>
                 </div>
                 <div class="mt-10 mb-10 grid-cols-1 w-[100%]">
-                    <span class="p-float-label">
-                        <input type="password" id="inputtext" name="password" class="rounded-lg p-3" pInputText [(ngModel)]="password">
-                        <label for="inputtext">Contraseña</label>
-                    </span>
+                    <div *ngIf="!password?.valid && (password?.dirty || password?.touched); else passwordGood">
+                        <span class="p-float-label">
+                            <input type="password" id="inputtext" name="password" formControlName="password"
+                                class="rounded-lg p-3 border border-red-500" pInputText>
+                            <label for="inputtext">Contraseña</label>
+                        </span>
+                        <div [hidden]="!password?.errors?.['required']" class="flex justify-center text-red-400">
+                            Debes introducir una contraseña
+                        </div>
+                    </div>
+                    <ng-template #passwordGood>
+                        <div *ngIf="loginError; else notError">
+                            <span class="p-float-label">
+                                <input type="password" id="inputtext" name="password" formControlName="password"
+                                    class="rounded-lg p-3 border border-red-500" pInputText>
+                                <label for="inputtext">Contraseña</label>
+                            </span>
+                        </div>
+                        <ng-template #notError>
+                            <span class="p-float-label">
+                                <input type="password" id="inputtext" name="password" formControlName="password"
+                                    class="rounded-lg p-3" pInputText>
+                                <label for="inputtext">Contraseña</label>
+                            </span>
+                        </ng-template>
+                    </ng-template>
+                    <div *ngIf="loginError" class="flex justify-center w-[100%]">
+                        <p class="text-red-500">Email o contraseña incorrectos</p>
+                    </div>
                 </div>
+                
                 <div class="flex justify-center">
                     <button pButton pRipple type="submit" label="Iniciar sesión" class="p-button-outlined p-button-help"></button>
                 </div>

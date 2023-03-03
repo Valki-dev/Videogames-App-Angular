@@ -18,6 +18,8 @@ export class ProfileComponent {
   showUpdateUser: boolean = false;
   password: string = "";
   password2: string = "";
+  updateError: boolean = false;
+  passwordError: boolean = false;
 
   ngOnInit(): void {
     this.userLogged = this.userService.getUserLogged();
@@ -34,7 +36,14 @@ export class ProfileComponent {
 
   updateUserData(userName: string, email: string, phoneNumber: string) {
     if((userName.trim() != "") && (email.trim() != "") && (phoneNumber.trim() != "") && (this.password.trim() != "") && (this.password2.trim() != "")) {
+      
+      this.updateError = false;
+      
       if(this.password === this.password2) {
+        this.passwordError = false;
+        this.password = "";
+        this.password2 = "";
+
         const updateData = {
           userId: this.userLogged.id,
           userName: userName,
@@ -61,13 +70,25 @@ export class ProfileComponent {
           }
         })
   
-      }  
+      }  else {
+        this.passwordError = true;
+        this.router.navigate(['/user/profile']);
+      }
+    } else {
+      this.updateError = true;
+      this.router.navigate(['/user/profile']);
     }
     
   }
 
   showForm() {
     this.showUpdateUser = true;
+    this.router.navigate(['/user/profile']);
+  }
+
+  hideForm() {
+    this.updateError = false;
+    this.showUpdateUser = false;
     this.router.navigate(['/user/profile']);
   }
 

@@ -42,7 +42,8 @@ import { RouterModule } from '@angular/router';
     AutoFocusModule,
     VirtualScrollerModule,
     DropdownModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ]
 })
 export class UsersModule { }

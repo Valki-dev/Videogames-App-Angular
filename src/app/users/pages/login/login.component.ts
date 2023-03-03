@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { GameService } from '../../../games/services/game.service';
 import { Router } from '@angular/router';
 import { User } from '../../interfaces/user.interface';
+import { FormGroup, FormBuilder, Form, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,31 +12,43 @@ import { User } from '../../interfaces/user.interface';
 })
 export class LoginComponent {
   
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
 
-  email: string = "";
-  password: string = "";
+  loginForm: FormGroup = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]]
+  })
 
+  // email: string = "";
+  // password: string = "";
+
+  get email() { return this.loginForm.get('email') }
+  get password() { return this.loginForm.get('password') }
+
+  loginError: boolean = false;
+  
   logIn() {
-    if((this.email.trim() != "") && (this.password.trim() != "")) {
+    const { email, password } = this.loginForm.value;
+    if((email.trim() != "") && (password.trim() != "")) {
       const data = {
-        email: this.email,
-        password: this.password
+        email: email,
+        password: password
       }
 
       this.userService.logIn(data).subscribe(response => {
+        console.log(response);
         if(response.length > 0) {
+          this.loginError = false;
 
-          let user: User = response[0];
-
-          console.log(response);
-          
+          let user: User = response[0];          
           
           this.userService.setUserLogged(user);
 
           this.userService.setLogged(true);
           
           this.router.navigate(['/games/all']);
+        } else {
+          this.loginError = true;
         }
       });
     }
