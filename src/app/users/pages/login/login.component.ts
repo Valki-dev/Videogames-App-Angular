@@ -33,8 +33,6 @@ export class LoginComponent {
       }
 
       this.userService.logIn(data).subscribe(response => {
-        console.log(response);
-        if(response.length > 0) {
           this.loginError = false;
 
           let user: User = response[0];          
@@ -44,7 +42,13 @@ export class LoginComponent {
           this.userService.setLogged(true);
           
           this.router.navigate(['/games/all']);
-        } else {
+
+      }, (err) => {
+        if(err.status == 500) {
+          this.router.navigate(['/error/server']);
+        }
+
+        if(err.status == 400) {
           this.loginError = true;
         }
       });

@@ -21,22 +21,10 @@ export class UserService {
 
   private cartEndpoint: string = "http://localhost:3000/api/v1/videogames/cart";
 
-  //private userLogged!: User ----> DEJARLO ASÍ AL FINAL
   
   private userLogged!: User
 
-  // private userLogged: User = {
-  //   id: '15e805a6-422b-4932-b39d-0a2bfe',
-  //   userName: 'angeles',
-  //   email: 'angeles@gmail.com',
-  //   password: '1234',
-  //   phoneNumber: '645756656',
-  //   subscriptionDate: new Date(),
-  //   isAdmin: false
-  // }
-
   getLogged() {
-    console.log("VALOR: ", this.logged);
     return this.logged;
   }
 

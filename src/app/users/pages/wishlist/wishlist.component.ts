@@ -19,11 +19,7 @@ export class WishlistComponent {
   ngOnInit(): void {
     this.userLogged = this.userService.getUserLogged();
     this.userService.getUserWishlist(this.userLogged.id).subscribe(response => {
-      if(response) {
-        console.log(response);
-        
         this.wishlist = response;
-      }
     }, (err) => {
       this.router.navigate(['/error/server']);
     })
@@ -54,8 +50,6 @@ export class WishlistComponent {
         productId: productId
       }
       this.userService.deleteFromWishlist(data).subscribe(response => {
-        console.log(response);
-
         if (response.status == 'OK') {
           this.userService.getUserWishlist(this.userLogged.id).subscribe(response => {
             if(response) {

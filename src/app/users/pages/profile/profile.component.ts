@@ -59,13 +59,10 @@ export class ProfileComponent {
         this.password2 = "";
 
         this.userService.updateUser(updateData).subscribe(response => {
-          console.log(response);
 
           if (response) {
             this.userService.getUserById(this.userLogged.id).subscribe(response => {
               if (response.length > 0) {
-                console.log("USUARIO", response);
-
                 this.userLogged = response[0];
                 this.userService.setUserLogged(response[0]);
                 this.showUpdateUser = false;

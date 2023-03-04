@@ -49,8 +49,6 @@ export class ShoppingCartComponent {
       }
 
       this.userService.deleteFromCart(data).subscribe(response => {
-        console.log(response);
-
         if (response.status == 'OK') {
           this.userService.getUserShoppingCart(this.userLogged.id).subscribe(response => {
             if (response) {
