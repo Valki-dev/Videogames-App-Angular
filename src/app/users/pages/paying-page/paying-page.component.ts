@@ -16,7 +16,7 @@ export class PayingPageComponent {
     setTimeout(() => {
       this.paying = false;
       this.router.navigate(['/user/paying']);
-    }, 4000);
+    }, 3000);
   }
 
   stopShowing() {

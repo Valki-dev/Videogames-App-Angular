@@ -7,8 +7,7 @@
                     <hr>
                 </div>
                 <div *ngIf="cart.length > 0; else empty">
-                    <div class="my-5 xl:w-[900px] xl:h-[200px] lg:w-[650px] md:flex-row rounded-lg shadow-lg p-5 overflow-x-auto bg-card"
-                        id="cart">
+                    <div class="my-5 xl:w-[900px] xl:h-[200px] lg:w-[650px] md:flex-row rounded-lg shadow-lg p-5 overflow-x-auto bg-card" id="cart">
                         <div class="flex flex-col md:flex-row md:max-w-6xl  justify-between items-center border border-gray-500 my-5 rounded-lg p-5" *ngFor="let item of cart">
                             <img src="{{item.URL}}" alt="Imagen no disponible"
                                 class="rounded-lg mx-5 w-[180px] h-[230px] md:w-[100px] md:h-[130px] sm:w-[200px] sm:h-[230px]">
@@ -41,8 +40,6 @@
                         </div>
                     </div>
                 </div>
-
-
 
                 <ng-template #empty>
                     <div

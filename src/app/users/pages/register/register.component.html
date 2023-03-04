@@ -4,105 +4,82 @@
             <h1 class="text-white text-4xl leading-tight font-medium mb-2">Registro</h1>
             <hr>
             <form [formGroup]="registerForm" (ngSubmit)="register()" class="flex flex-col items-center px-5" novalidate>
-                <div class="mt-10 grid-cols-1 w-[100%]">
+                <div class="mt-5 grid-cols-1 w-[100%]">
                     <div *ngIf="!userName?.valid && (userName?.dirty ||userName?.touched); else userNameGood">
-                        <span class="p-float-label">
-                            <input type="text" id="inputtext" name="userName" formControlName="userName"
-                                class="rounded-lg p-3 border border-red-500" pInputText pAutoFocus [autofocus]="true">
-                            <label for="inputtext">Nombre de usuario</label>
-                        </span>
+                        <label for="userName" class="text-sm leading-6 text-red-500">Nombre de usuario</label>
+                        <input type="text" name="userName" id="userName" formControlName="userName" autocomplete="given-name"
+                            class="rounded-lg p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 border border-red-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-md" placeholder="Usuario_95">
                         <div [hidden]="!userName?.errors?.['required']" class="flex justify-center text-red-400">
                             Debes introducir un nombre de usuario
                         </div>
                     </div>
                     <ng-template #userNameGood>
-                        <span class="p-float-label">
-                            <input type="text" id="inputtext" name="userName" formControlName="userName"
-                                class="rounded-lg p-3" pInputText pAutoFocus [autofocus]="true">
-                            <label for="inputtext">Nombre de usuario</label>
-                        </span>
+                        <label for="userName" class="block text-sm font-medium leading-6 text-gray-500">Nombre de usuario</label>
+                        <input type="text" name="userName" id="userName" formControlName="userName" autocomplete="given-name"
+                            class="rounded-lg p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-md" placeholder="Usuario_95">
                     </ng-template>
                 </div>
 
-                <div class="mt-10 grid-cols-1 w-[100%]">
+                <div class="mt-5 grid-cols-1 w-[100%]">
                     <div *ngIf="!email?.valid && (email?.dirty || email?.touched); else emailGood">
-                        <span class="p-float-label">
-                            <input type="email" id="inputtext" name="email" formControlName="email"
-                                class="rounded-lg p-3 border border-red-500" pInputText>
-                            <label for="inputtext">Email</label>
-                        </span>
-                        <!-- <div [hidden]="!email?.errors?.['required']" class="flex justify-center text-red-400">
-                            Debes introducir un email
-                        </div> -->
+                        <label for="email" class="block text-sm leading-6 text-red-500">Email</label>
+                        <input type="email" name="email" id="userName" formControlName="email" autocomplete="given-name"
+                            class="rounded-lg p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 border border-red-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-md " placeholder="email@example.com">
                         <div [hidden]="!email?.errors?.['email']" class="flex justify-center text-red-400">
                             Debes introducir un email válido
                         </div>
                     </div>
                     <ng-template #emailGood>
-                        <span class="p-float-label">
-                            <input type="text" id="inputtext" name="email" formControlName="email"
-                                class="rounded-lg p-3" pInputText>
-                            <label for="inputtext">Email</label>
-                        </span>
+                        <label for="email" class="block text-sm font-medium leading-6 text-gray-500">Email</label>
+                        <input type="email" name="email" id="userName" formControlName="email" autocomplete="given-name"
+                            class="rounded-lg p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-md " placeholder="email@example.com">
                     </ng-template>
 
                 </div>
-                <div class="mt-10 grid-cols-1 w-[100%]">
+                <div class="mt-5 grid-cols-1 w-[100%]">
                     <div *ngIf="!password?.valid && (password?.dirty || password?.touched); else passwordGood">
-                        <span class="p-float-label">
-                            <input type="password" id="inputtext" name="password" formControlName="password"
-                                class="rounded-lg p-3 border border-red-500" pInputText>
-                            <label for="inputtext">Contraseña</label>
-                        </span>
+                        <label for="password" class="block text-sm leading-6 text-red-500">Contraseña</label>
+                        <input type="password" name="password" id="password" formControlName="password" autocomplete="given-name"
+                            class="rounded-lg p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 border border-red-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-md " placeholder="********">
                         <div [hidden]="!password?.errors?.['required']" class="flex justify-center text-red-400">
-                            Debes introducir una contraseña
+                            Debes introducir una contraseña con una longitud mínima de cuatro caracteres
                         </div>
                     </div>
                     <ng-template #passwordGood>
-                        <span class="p-float-label">
-                            <input type="password" id="inputtext" name="password" formControlName="password"
-                                class="rounded-lg p-3" pInputText>
-                            <label for="inputtext">Contraseña</label>
-                        </span>
+                        <label for="password" class="block text-sm font-medium leading-6 text-gray-500">Contraseña</label>
+                        <input type="password" name="password" id="password" formControlName="password" autocomplete="given-name"
+                            class="rounded-lg p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-md " placeholder="********">
                     </ng-template>
                 </div>
-                <div class="mt-10 grid-cols-1 w-[100%]">
+                <div class="mt-5 grid-cols-1 w-[100%]">
                     <div *ngIf="!password2?.valid && (password2?.dirty || password2?.touched); else password2Good">
-                        <span class="p-float-label">
-                            <input type="password" id="inputtext" name="password2" formControlName="password2"
-                                class="rounded-lg p-3 border border-red-500" pInputText>
-                            <label for="inputtext">Repite la contraseña</label>
-                        </span>
+                        <label for="password2" class="block text-sm leading-6 text-red-500">Repite la contraseña</label>
+                        <input type="password" name="password2" id="password2" formControlName="password2" autocomplete="given-name"
+                            class="rounded-lg p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 border border-red-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-md " placeholder="********">
                         <div [hidden]="!password2?.errors?.['required']" class="flex justify-center text-red-400">
                             Debes introducir una contraseña
                         </div>
                     </div>
                     <ng-template #password2Good>
-                        <span class="p-float-label">
-                            <input type="password" id="inputtext" name="password2" formControlName="password2" class="rounded-lg p-3" pInputText>
-                            <label for="inputtext">Repite la contraseña</label>
-                        </span>
+                        <label for="password2" class="block text-sm font-medium leading-6 text-gray-500">Repite la contraseña</label>
+                        <input type="password" name="password2" id="password2" formControlName="password2" autocomplete="given-name"
+                            class="rounded-lg p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-md " placeholder="********">
                     </ng-template>
                 </div>
 
-                <div class="mt-10 grid-cols-1 w-[100%]">
+                <div class="mt-5 grid-cols-1 w-[100%]">
                     <div *ngIf="!phoneNumber?.valid && (phoneNumber?.dirty || phoneNumber?.touched); else phoneNumberGood">
-                        <span class="p-float-label">
-                            <input type="text" id="inputtext" name="phoneNumber" formControlName="phoneNumber" class="rounded-lg p-3 border border-red-500" pInputText>
-                            <label for="inputtext">Teléfono</label>
-                        </span>
-                        <div [hidden]="!phoneNumber?.errors?.['required']" class="flex justify-center text-red-400">
-                            Debes introducir un número de teléfono
-                        </div>
+                        <label for="phoneNumber" class="block text-sm leading-6 text-red-500">Teléfono</label>
+                        <input type="text" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber" autocomplete="given-name"
+                            class="rounded-lg p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 border border-red-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-md " placeholder="600000000">
                         <div [hidden]="!phoneNumber?.errors?.['min']" class="flex justify-center text-red-400">
                             Debes introducir un número de teléfono válido
                         </div>
                     </div>
                     <ng-template #phoneNumberGood>
-                        <span class="p-float-label">
-                            <input type="text" id="inputtext" name="phoneNumber" formControlName="phoneNumber" class="rounded-lg p-3" pInputText>
-                            <label for="inputtext">Teléfono</label>
-                        </span>
+                        <label for="phoneNumber" class="block text-sm font-medium leading-6 text-gray-500">Teléfono</label>
+                        <input type="text" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber" autocomplete="given-name"
+                            class="rounded-lg p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-md " placeholder="600000000">
                     </ng-template>
                 </div>
                 <div *ngIf="showRegisterError" class="mt-10">
@@ -124,7 +101,7 @@
                         class="p-button-outlined p-button-help"></button>
                 </div>
             </form>
-            
+
         </div>
     </div>
 </div>

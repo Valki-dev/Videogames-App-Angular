@@ -14,7 +14,7 @@ export class WishlistComponent {
 
   wishlist: WishlistItem[] = [];
   userLogged!: User;
-
+  showAddCart: boolean = false;
 
   ngOnInit(): void {
     this.userLogged = this.userService.getUserLogged();
@@ -27,7 +27,6 @@ export class WishlistComponent {
 
   addToCart(gameId: number) {
     if(this.userService.getLogged()) {
-      alert('LOGUEADO');
       if(gameId && (this.userService.getUserLogged().id != "")) {
         
         const data = {
@@ -35,7 +34,10 @@ export class WishlistComponent {
           productId: gameId
         }
         this.userService.addToCart(data).subscribe(response => {
-
+          this.showAddCart = true;
+          setTimeout(() => {
+            this.showAddCart = false;
+          }, 3000);
         }, (err) => {
           this.router.navigate(['/error/server']);
         })
