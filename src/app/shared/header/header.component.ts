@@ -26,6 +26,8 @@ export class HeaderComponent {
         this.gameService.videoGames = response;
         this.gameService.originalGames = [...response];
       }
+    }, (err) => {
+      this.router.navigate(['/error/server']);
     })    
   }
 
@@ -35,6 +37,8 @@ export class HeaderComponent {
         this.gameService.videoGames = [...response];
         this.gameService.originalGames = [...response]
       }
+    }, (err) => {
+      this.router.navigate(['/error/server']);
     })
   }
 
@@ -44,6 +48,8 @@ export class HeaderComponent {
         this.gameService.videoGames = [...response];
         this.gameService.originalGames = [...response];
       }
+    }, (err) => {
+      this.router.navigate(['/error/server']);
     })
   }
 
@@ -54,6 +60,8 @@ export class HeaderComponent {
         this.gameService.originalGames = [...response];
         this.toggleShowGenders();
       }
+    }, (err) => {
+      this.router.navigate(['/error/server']);
     })
   }
 
@@ -86,7 +94,5 @@ export class HeaderComponent {
   toggleShowMobileGenders() {
     this.showMobileGenders ? this.showMobileGenders = false : this.showMobileGenders = true;
   }
-
-  // INSERT INTO products (name, developer, publisher, releaseDate, gender, description, stock, price, available, onOffer, isNew, URL)VALUES("", "", "", "", "", "", 200, 0, true, false, true, "");
 
 }

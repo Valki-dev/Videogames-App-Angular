@@ -22,13 +22,9 @@ export class RegisterComponent {
     phoneNumber: ['', [Validators.required]]
   })
 
-  // userName: string = "";
-  // email: string = "";
-  // password: string = "";
-  // password2: string = "";
-  // phoneNumber: string = "";
   showAlert: boolean = false;
   message: string = "";
+  showRegisterError: boolean = false;
 
   get userName() { return this.registerForm.get('userName')};
   get email() { return this.registerForm.get('email') };
@@ -51,30 +47,19 @@ export class RegisterComponent {
           isAdmin: false
         }
   
-        console.log(newUser);
-  
         this.userService.createUser(newUser).subscribe(response => {
-          if(HttpErrorResponse) {
-            console.log(HttpErrorResponse);
-  
-            this.showAlert = true;
-            // console.log(response);
-            alert('El usuario ya está registrado en el sistema!')
-          }
-  
-          if (response.status === "OK") {
-            console.log(response);
-            this.router.navigate(['/user/login'])
-          }
-  
+            this.router.navigate(['/user/login']);      
+        }, (err) => {
+          this.showRegisterError = true;
+          setTimeout(() => {
+            this.showRegisterError = false;
+          }, 3000);
         })
       } else {
         this.showAlert = true;
         this.message = "Las contraseñas son distintas"
       }
     }
-
     
-
   }
 }

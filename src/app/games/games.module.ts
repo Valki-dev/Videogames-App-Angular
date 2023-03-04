@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { GameDetailsComponent } from './pages/game-details/game-details.component';
 import { ButtonModule } from 'primeng/button';
 import { SortGamesPipe } from './pipes/sort-games.pipe';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SortGamesPipe } from './pipes/sort-games.pipe';
     GamesRoutingModule,
     HttpClientModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    RouterModule
   ]
 })
 export class GamesModule { }

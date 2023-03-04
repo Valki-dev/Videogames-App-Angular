@@ -19,9 +19,6 @@ export class LoginComponent {
     password: ['', [Validators.required]]
   })
 
-  // email: string = "";
-  // password: string = "";
-
   get email() { return this.loginForm.get('email') }
   get password() { return this.loginForm.get('password') }
 

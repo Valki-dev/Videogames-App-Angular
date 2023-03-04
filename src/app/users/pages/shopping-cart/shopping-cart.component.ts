@@ -31,6 +31,8 @@ export class ShoppingCartComponent {
         this.cart = response;
         this.total = this.calculateTotal();
       }
+    }, (err) => {
+      this.router.navigate(['/error/server']);
     }) 
   }
 
@@ -58,13 +60,13 @@ export class ShoppingCartComponent {
           })
           this.router.navigate(['/user/cart']);
         }
+      }, (err) => {
+        this.router.navigate(['/error/server']);
       })
     }
   }
 
   changeAmount(productId: number, selectValue: any) {
-    console.log({selectValue});
-
     if(this.userService.getLogged()) {
       if(productId && (this.userService.getUserLogged().id)) {
         const data = {
@@ -79,6 +81,8 @@ export class ShoppingCartComponent {
             this.total = this.calculateTotal();
             this.router.navigate(['/user/cart']);
           }
+        }, (err) => {
+          this.router.navigate(['/error/server']);
         })
       }
     }
@@ -106,6 +110,8 @@ export class ShoppingCartComponent {
           })
           this.router.navigate(['/user/paying'])
         }
+      }, (err) => {
+        this.router.navigate(['/error/server']);
       })
     });
   }

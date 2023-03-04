@@ -17,9 +17,8 @@ export class AuthenticationGuard implements CanActivate {
       if(this.service.getLogged()) {
         return true;
       } else {
-        // alert("ANTES DEBES INICIAR SESIÓN!!")
-        // this.router.navigate(['/user/login']);
-        return true;
+        this.router.navigate(['/user/login']);
+        return false;
       }
   }
   

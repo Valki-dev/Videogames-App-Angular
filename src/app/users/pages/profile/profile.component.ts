@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent {
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) { }
 
   userLogged!: User;
   sales: Sale[] = [];
@@ -20,6 +20,7 @@ export class ProfileComponent {
   password2: string = "";
   updateError: boolean = false;
   passwordError: boolean = false;
+  showErrorUpdate: boolean = false;
 
   ngOnInit(): void {
     this.userLogged = this.userService.getUserLogged();
@@ -28,21 +29,22 @@ export class ProfileComponent {
 
   getUserSales() {
     this.userService.getUserSales(this.userLogged.id).subscribe(response => {
-      if(response) {
+      if (response) {
         this.sales = response;
       }
+    }, (err) => {
+      this.router.navigate(['/error/server']);
     })
   }
 
   updateUserData(userName: string, email: string, phoneNumber: string) {
-    if((userName.trim() != "") && (email.trim() != "") && (phoneNumber.trim() != "") && (this.password.trim() != "") && (this.password2.trim() != "")) {
-      
+    if ((userName.trim() != "") && (email.trim() != "") && (phoneNumber.trim() != "") && (this.password.trim() != "") && (this.password2.trim() != "")) {
+
       this.updateError = false;
-      
-      if(this.password === this.password2) {
+
+      if (this.password === this.password2) {
         this.passwordError = false;
-        this.password = "";
-        this.password2 = "";
+
 
         const updateData = {
           userId: this.userLogged.id,
@@ -53,24 +55,40 @@ export class ProfileComponent {
           subscriptionDate: this.userLogged.subscriptionDate
         }
 
+        this.password = "";
+        this.password2 = "";
+
         this.userService.updateUser(updateData).subscribe(response => {
           console.log(response);
-          
-          if(response) {
+
+          if (response) {
             this.userService.getUserById(this.userLogged.id).subscribe(response => {
-              if(response.length > 0) {
+              if (response.length > 0) {
                 console.log("USUARIO", response);
-                
+
                 this.userLogged = response[0];
                 this.userService.setUserLogged(response[0]);
                 this.showUpdateUser = false;
                 this.router.navigate(['/user/profile']);
               }
+            }, (err) => {
+              this.router.navigate(['/error/server']);
             })
           }
+        }, (err) => {
+          if (err.status == 500) {
+            this.router.navigate(['/error/server']);
+          }
+
+          if (err.status == 400) {
+            this.showErrorUpdate = true;
+            setTimeout(() => {
+              this.showErrorUpdate = false;
+            }, 3000);
+          }
         })
-  
-      }  else {
+
+      } else {
         this.passwordError = true;
         this.router.navigate(['/user/profile']);
       }
@@ -78,7 +96,6 @@ export class ProfileComponent {
       this.updateError = true;
       this.router.navigate(['/user/profile']);
     }
-    
   }
 
   showForm() {

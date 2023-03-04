@@ -85,7 +85,7 @@
                     </ng-template>
                 </div>
 
-                <div class="mt-10 mb-10 grid-cols-1 w-[100%]">
+                <div class="mt-10 grid-cols-1 w-[100%]">
                     <div *ngIf="!phoneNumber?.valid && (phoneNumber?.dirty || phoneNumber?.touched); else phoneNumberGood">
                         <span class="p-float-label">
                             <input type="text" id="inputtext" name="phoneNumber" formControlName="phoneNumber" class="rounded-lg p-3 border border-red-500" pInputText>
@@ -104,14 +104,27 @@
                             <label for="inputtext">Teléfono</label>
                         </span>
                     </ng-template>
-                    
+                </div>
+                <div *ngIf="showRegisterError" class="mt-10">
+                    <div class="mb-3 inline-flex w-full items-center rounded-lg bg-red-200 py-5 px-6 text-base text-red-700"
+                        role="alert">
+                        <span class="mr-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" class="h-5 w-5">
+                                <path fill-rule="evenodd"
+                                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                        El usuario ya está registrado en el sistema
+                    </div>
                 </div>
 
-                <div class="flex justify-center">
+                <div class="flex justify-center mt-10">
                     <button pButton pRipple type="submit" label="Registrarme"
                         class="p-button-outlined p-button-help"></button>
                 </div>
             </form>
+            
         </div>
     </div>
 </div>

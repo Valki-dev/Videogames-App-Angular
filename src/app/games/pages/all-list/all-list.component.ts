@@ -31,11 +31,13 @@ export class AllListComponent implements OnInit {
       this.games = [...response];
       this.gameService.videoGames = [...response];
       this.gameService.originalGames = [...response];
+    }, (err) => {
+      this.router.navigate(['/error/server']);
     })
   }
 
   searchGamesByName(search: string) {
-    if(search) {
+    if (search) {
       this.gameService.getGamesByName(search).subscribe((response: any) => {
         this.games = response;
         this.gameService.videoGames = response;
@@ -56,7 +58,7 @@ export class AllListComponent implements OnInit {
     this.router.navigate(['/all/games']);
   }
 
-  clearSort() {   
+  clearSort() {
     this.sortGames('all');
     this.toggleShowOptions();
     this.methodSelected = false;

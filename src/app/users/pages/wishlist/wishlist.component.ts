@@ -24,6 +24,8 @@ export class WishlistComponent {
         
         this.wishlist = response;
       }
+    }, (err) => {
+      this.router.navigate(['/error/server']);
     })
   }
 
@@ -38,13 +40,11 @@ export class WishlistComponent {
         }
         this.userService.addToCart(data).subscribe(response => {
 
+        }, (err) => {
+          this.router.navigate(['/error/server']);
         })
       }
-      
-    } else {
-      alert('INICIA SESIÓN!')
-      this.router.navigate(['/user/login']);
-    }
+    } 
   }
 
   deleteFromWishlist(productId: number) {
@@ -65,7 +65,8 @@ export class WishlistComponent {
           })
           this.router.navigate(['/user/wishlist']);
         }
-        
+      }, (err) => {
+        this.router.navigate(['/error/server']);
       })
     }
   }
